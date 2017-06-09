@@ -1,0 +1,164 @@
+{
+  "name": "luyangtong3.0",
+  "version": "1.0.0",
+  "dependencies": {
+    "fastclick": {
+      "version": "1.0.6",
+      "from": "fastclick@1.0.6",
+      "resolved": "http://registry.npm.taobao.org/fastclick/download/fastclick-1.0.6.tgz"
+    },
+    "iscroll": {
+      "version": "5.2.0",
+      "from": "iscroll@latest",
+      "resolved": "https://registry.npmjs.org/iscroll/-/iscroll-5.2.0.tgz"
+    },
+    "vue": {
+      "version": "2.3.3",
+      "from": "vue@2.3.3",
+      "resolved": "http://registry.npm.taobao.org/vue/download/vue-2.3.3.tgz"
+    },
+    "vue-router": {
+      "version": "2.5.3",
+      "from": "vue-router@2.5.3",
+      "resolved": "http://registry.npm.taobao.org/vue-router/download/vue-router-2.5.3.tgz"
+    },
+    "vuex": {
+      "version": "2.3.1",
+      "from": "vuex@2.3.1",
+      "resolved": "http://registry.npm.taobao.org/vuex/download/vuex-2.3.1.tgz"
+    },
+    "vux": {
+      "version": "2.3.4",
+      "from": "vux@2.3.4",
+      "resolved": "http://registry.npm.taobao.org/vux/download/vux-2.3.4.tgz",
+      "dependencies": {
+        "array-filter": {
+          "version": "1.0.0",
+          "from": "array-filter@1.0.0",
+          "resolved": "http://registry.npm.taobao.org/array-filter/download/array-filter-1.0.0.tgz"
+        },
+        "array-find": {
+          "version": "1.0.0",
+          "from": "array-find@1.0.0",
+          "resolved": "http://registry.npm.taobao.org/array-find/download/array-find-1.0.0.tgz"
+        },
+        "array-from": {
+          "version": "2.1.1",
+          "from": "array-from@2.1.1",
+          "resolved": "http://registry.npm.taobao.org/array-from/download/array-from-2.1.1.tgz"
+        },
+        "array-map": {
+          "version": "0.0.0",
+          "from": "array-map@0.0.0",
+          "resolved": "http://registry.npm.taobao.org/array-map/download/array-map-0.0.0.tgz"
+        },
+        "array-shuffle": {
+          "version": "1.0.1",
+          "from": "array-shuffle@1.0.1",
+          "resolved": "http://registry.npm.taobao.org/array-shuffle/download/array-shuffle-1.0.1.tgz"
+        },
+        "autosize": {
+          "version": "3.0.21",
+          "from": "autosize@3.0.21",
+          "resolved": "http://registry.npm.taobao.org/autosize/download/autosize-3.0.21.tgz"
+        },
+        "axios": {
+          "version": "0.15.3",
+          "from": "axios@0.15.3",
+          "resolved": "http://registry.npm.taobao.org/axios/download/axios-0.15.3.tgz",
+          "dependencies": {
+            "follow-redirects": {
+              "version": "1.0.0",
+              "from": "follow-redirects@1.0.0",
+              "resolved": "http://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.0.0.tgz",
+              "dependencies": {
+                "debug": {
+                  "version": "2.6.8",
+                  "from": "debug@2.6.8",
+                  "resolved": "http://registry.npm.taobao.org/debug/download/debug-2.6.8.tgz",
+                  "dependencies": {
+                    "ms": {
+                      "version": "2.0.0",
+                      "from": "ms@2.0.0",
+                      "resolved": "http://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "blueimp-md5": {
+          "version": "2.7.0",
+          "from": "blueimp-md5@2.7.0",
+          "resolved": "http://registry.npm.taobao.org/blueimp-md5/download/blueimp-md5-2.7.0.tgz"
+        },
+        "countup.js": {
+          "version": "1.8.5",
+          "from": "countup.js@1.8.5",
+          "resolved": "http://registry.npm.taobao.org/countup.js/download/countup.js-1.8.5.tgz"
+        },
+        "fastclick": {
+          "version": "1.0.6",
+          "from": "fastclick@1.0.6",
+          "resolved": "http://registry.npm.taobao.org/fastclick/download/fastclick-1.0.6.tgz"
+        },
+        "lodash.debounce": {
+          "version": "4.0.8",
+          "from": "lodash.debounce@4.0.8",
+          "resolved": "http://registry.npm.taobao.org/lodash.debounce/download/lodash.debounce-4.0.8.tgz"
+        },
+        "lodash.throttle": {
+          "version": "4.1.1",
+          "from": "lodash.throttle@4.1.1",
+          "resolved": "http://registry.npm.taobao.org/lodash.throttle/download/lodash.throttle-4.1.1.tgz"
+        },
+        "object-assign": {
+          "version": "4.1.1",
+          "from": "object-assign@4.1.1",
+          "resolved": "http://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz"
+        },
+        "photoswipe": {
+          "version": "4.1.2",
+          "from": "photoswipe@4.1.2",
+          "resolved": "http://registry.npm.taobao.org/photoswipe/download/photoswipe-4.1.2.tgz"
+        },
+        "qr.js": {
+          "version": "0.0.0",
+          "from": "qr.js@0.0.0",
+          "resolved": "http://registry.npm.taobao.org/qr.js/download/qr.js-0.0.0.tgz"
+        },
+        "shake.js": {
+          "version": "1.2.2",
+          "from": "shake.js@1.2.2",
+          "resolved": "http://registry.npm.taobao.org/shake.js/download/shake.js-1.2.2.tgz"
+        },
+        "validator": {
+          "version": "6.3.0",
+          "from": "validator@6.3.0",
+          "resolved": "http://registry.npm.taobao.org/validator/download/validator-6.3.0.tgz"
+        },
+        "vux-blazy": {
+          "version": "1.6.4",
+          "from": "vux-blazy@1.6.4",
+          "resolved": "http://registry.npm.taobao.org/vux-blazy/download/vux-blazy-1.6.4.tgz"
+        },
+        "vux-xscroll": {
+          "version": "3.1.12",
+          "from": "vux-xscroll@3.1.12",
+          "resolved": "http://registry.npm.taobao.org/vux-xscroll/download/vux-xscroll-3.1.12.tgz"
+        },
+        "webp-support": {
+          "version": "1.0.3",
+          "from": "webp-support@1.0.3",
+          "resolved": "http://registry.npm.taobao.org/webp-support/download/webp-support-1.0.3.tgz"
+        },
+        "weixin-js-sdk": {
+          "version": "1.2.0",
+          "from": "weixin-js-sdk@1.2.0",
+          "resolved": "http://registry.npm.taobao.org/weixin-js-sdk/download/weixin-js-sdk-1.2.0.tgz"
+        }
+      }
+    }
+  }
+}
