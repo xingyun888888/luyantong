@@ -24,7 +24,6 @@ Vue.use(ToastPlugin);
 
 console.log(Vue.wechat);
 
-console.log(Vue.wechat.config);
 //
 // Vue.config({
 //   debug:true,
@@ -43,7 +42,7 @@ Vue.config.productionTip = false
 
 
 //路由和store同步
-sync(store, router)
+//sync(store, router)
 
 
 
@@ -97,7 +96,8 @@ router.beforeEach(function (to, from, next) {
 new Vue({
   el: '#app',
   router,
+  store,
   //template: '<App/>',
-  render:h=>h(App),
-  components: { App }
+  //render:h=>h(App),
+ // components: { App }
 })

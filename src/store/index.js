@@ -9,10 +9,11 @@ import getters from './getters'
 import state from "./state"
 
 Vue.use(Vuex);
+//console.log(actions);
 
-export default new Vuex.Store(
+export default new Vuex.Store({
   state,
   getters,
   actions,
   mutations,
-)
+})

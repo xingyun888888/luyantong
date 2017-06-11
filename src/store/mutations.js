@@ -3,14 +3,7 @@
  */
 
 export default{
-  'SHOPLIST'(state, data) {
-    state.shop = data
-  },
-  'SESSION'(state, data) {
-    state.session = data
-  },
-  'CLEARSESSION'(state, data) {
-    localStorage.removeItem('token')
-    state.token = null
+  GET_TOKEN(state, data) {
+    state.token = data;
   }
 }

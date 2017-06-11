@@ -4,32 +4,22 @@
 
 
 
+import axios from "axios"
 
-
-export default{
-  /**
-   */
-  getShop:({ state,commit }) => {
-    if(state.shop.length != 0){
-      commit('SHOPLIST',state.shop)
-      return
-    }else{
+const actions={
+  gettoken({ state,commit }){
+    debugger;
       return new Promise((resolve, reject)=> {
+        let url = window.location.href.split('#')[0];
         axios({
           method:'get',
-          url: 'noa/shop'
-        })
-          .then((response) => {
-            commit('SHOPLIST',response.data.data)
+          url: 'http://smile888.applinzi.com/getToken.php',
+          params:{url}
+        }).then((response) => {
+            commit('GET_TOKEN',response)
             resolve(response)
-          })
+        })
       })
-    }
-  },
-  setSession:({ commit },data) => {
-    commit('SESSION',data.amount)
-  },
-  clearSession:({ commit }) => {
-    commit('CLEARSESSION')
   }
 }
+export default actions;
