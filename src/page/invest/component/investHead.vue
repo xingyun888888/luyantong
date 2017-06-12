@@ -9,9 +9,9 @@
       <div class="zm-card-right">
         <div class="zm-card-header">
           <span class="zm-card-title">{{value.name}}</span>
-          <span>{{value.address}}</span>
-          <span class="listened-number">{{vlaue.listened}}</span>
-          <span class="answer-nummber">{{value.answered}}</span>
+          <span class="address">{{value.address}}</span>
+          <span class="answer-nummber">{{value.answered}}个回答</span>
+          <span class="listened-number">{{value.listened}}人收听</span>
         </div>
         <div class="zm-card-body">
           <span class="position">{{value.position}}</span>
@@ -35,12 +35,12 @@
            default:()=>{
                return{
                    photo:"",
-                   address:"",
-                   name:"",
-                   number:"",
-                   listened:"",
-                   answered:"",
-                   position:"",
+                   address:"北京",
+                   name:"王强",
+                   number:"12",
+                   listened:"20",
+                   answered:"30",
+                   position:"创投孵化器/创投总监",
                    attention:function(){
                        alert("关注");
                    },
@@ -55,12 +55,85 @@
        }
     },
     methods:{
+    	
     },
     components:{
 
     }
   }
 </script>
-<style lang="sass">
+<style lang="scss" scoped>
+@import "../../../style/valiable";
+  .invest-head{
+  	box-sizing:border-box;
+  	padding:0.8rem;
+  	.invest-card-head{
+  		width:100%;
+  		overflow:hidden;
+  		height:4rem;
+  		.zm-card-left{
+  			float:left;
+  			width:15%;
+  		    height:4rem;
+  		    .zm-card-photo{
+  		    	display:inline-block;
+  		    	width:3rem;
+  		    	height:3rem;
+  		    	border-radius:50%;
+  		    	border:1px solid #aaa;
+  		    }
+  		}
+  		.zm-card-right{
+  			width:85%;
+  			float:left;
+  			.zm-card-header{
+  				span{
+  				  margin-right:0.5rem;	
+  				  color:$gray9;
+  				}
+  				.address{
+  					font-size:0.9rem;
+  				}
+  				.answer-nummber{
+  					font-size:0.9rem;
+  					float:right;
+  				}
+  				.listened-number{
+  					font-size:0.9rem;
+  					float:right;
+  				}
+  			}
+  			.zm-card-body{
+  				button{
+  				  float:right;	
+  				  background:$theme;
+  				  border:0;
+  				  outline:0;
+  				  width:4rem;
+  				  padding:0.3rem;
+  				  border-radius:2rem;
+  				  color:$white;
+  				}
+  			}
+  		}
+  	}
+  	.invest-card-body{
+  		clear:both;
+  		a.zm-label{
+            background:#ccc;
+            width:4rem;
+            padding:0.3rem 0.5rem;
+            border-radius:1.5rem;
+            font-size:0.9rem;
+            margin-right:0.5rem;
+            color:$gray3;
+  		}
+  	}
+  	.invest-card-foot{
+  		margin-top:1rem;
+  		font-size:0.9rem;
+  		color:$gray3;
+  	}
+  }
 
 </style>

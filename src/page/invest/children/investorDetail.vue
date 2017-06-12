@@ -5,7 +5,9 @@
     import  investHead  from  "../component/investHead.vue"
     export default{
         data(){
-
+           return{
+            
+           }
         },
         methods:{},
         components:{
