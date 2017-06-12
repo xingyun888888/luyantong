@@ -8,7 +8,6 @@ import axios from "axios"
 
 const actions={
   gettoken({ state,commit }){
-    debugger;
       return new Promise((resolve, reject)=> {
         let url = window.location.href.split('#')[0];
         axios({

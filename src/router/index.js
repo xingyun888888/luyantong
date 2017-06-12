@@ -8,6 +8,9 @@ const hello = r => require.ensure([], () => r(require('../page/hello/Hello')), '
 const Swiper = r => require.ensure([], () => r(require('../page/hello/Swiper')), 'swiper')
 const Timeline = r => require.ensure([], () => r(require('../page/hello/Timeline')), 'timeline')
 
+//找投资人页面
+const invest = r => require.ensure([], () => r(require('../page/invest')), 'invest')
+const investorDetail=r => require.ensure([], () => r(require('../page/invest/children/investorDetail')), 'investorDetail')
 /**
  * 我的主页
  */
@@ -39,6 +42,14 @@ export default new Router({
           {
             path:"/hello",
             component:hello
+          },
+          {
+            path:"/invest",
+            component:invest,
+          },
+          {
+            path:"/investorDetail",
+            component:investorDetail
           }
       ]
     }

@@ -20,25 +20,25 @@
 
 	    	</defs>
     	</svg>
-        <section @click = "gotoAddress({path: '/msite', query: {geohash}})" class="guide_item">
+        <section @click = "gotoAddress({path: '/invest', query:''})" class="guide_item">
         	<svg class="icon_style">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('msite') !== -1? '#msiteActive' : '#msite'"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('invest') !== -1? '#msiteActive' : '#msite'"></use>
             </svg>
-            <span>首页</span>
+            <span>找投资</span>
         </section>
-        <section @click = "gotoAddress({path: '/search/' + geohash})" class="guide_item">
+        <section @click = "gotoAddress({path: '/hello'})" class="guide_item">
         	<svg class="icon_style">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('search') !== -1? '#findActive' : '#find'"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('hello') !== -1? '#findActive' : '#find'"></use>
             </svg>
-            <span>搜索</span>
+            <span>找项目</span>
         </section>
-        <section @click = "gotoAddress('/order')" class="guide_item">
+        <section @click = "gotoAddress('/hello')" class="guide_item">
         	<svg class="icon_style">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('order') !== -1? '#orderActive' : '#order'"></use>
             </svg>
-            <span>订单</span>
+            <span>活动</span>
         </section>
-        <section @click = "gotoAddress('/profile')" class="guide_item">
+        <section @click = "gotoAddress('/hello')" class="guide_item">
         	<svg class="icon_style">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('profile') !== -1? '#profileActive' : '#profile'"></use>
             </svg>
@@ -85,7 +85,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        @include wh(100%, 1.95rem);
+        @include wh(100%, 3rem);
         display: flex;
         box-shadow: 0 -0.026667rem 0.053333rem rgba(0,0,0,.1);
     }
@@ -96,13 +96,13 @@
     	flex-direction: column;
     	align-items: center;
 		.icon_style{
-			@include wh(.8rem, .8rem);
+			@include wh(1.3rem, 1.3rem);
 			margin-bottom: .2rem;
 			margin-top: .3rem;
 			fill: #ccc;
 		}
 		span{
-			@include sc(.45rem, #666);
+			@include sc(.6rem, #666);
 		}
     }
 
