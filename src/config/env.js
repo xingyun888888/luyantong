@@ -5,12 +5,12 @@
  *  imgBaseUrl:图片域名地址
  *  serverUrl:后台服务器地址
  */
-
+let BaseUrl="";
 let  imgBaseUrl = "";
 let  serverUrl = "";
 
 export default{
-  imgBaseUrl,serverUrl
+  imgBaseUrl,serverUrl,BaseUrl
 }
 
 

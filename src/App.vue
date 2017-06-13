@@ -21,6 +21,7 @@ export default {
     },
     mounted(){
 //      this.gettoken().then((res)=>{
+//        console.log(res.data);
 //        this.$wechat.config({
 //          debug:true,
 //          appId  : "wxda4d3c7659b5fc61",
@@ -87,7 +88,7 @@ export default {
 </script>
 
 <style lang="scss">
-  /*@import "./style/common.scss";*/
+  @import "./style/common.scss";
   /*.router-fade-enter-active,.router-fade-leave-action{*/
     /*transition:opacity 0.3s;*/
   /*}*/

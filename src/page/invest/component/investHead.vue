@@ -11,11 +11,11 @@
           <span class="zm-card-title">{{value.name}}</span>
           <span class="address">{{value.address}}</span>
           <span class="answer-nummber">{{value.answered}}个回答</span>
-          <span class="listened-number">{{value.listened}}人收听</span>
+          <span class="listened-number">{{value.listened}}人关注</span>
         </div>
         <div class="zm-card-body">
           <span class="position">{{value.position}}</span>
-          <button @click="value.attention">关注</button>
+          <button :class="{'isAttentionSuccess':isAttentionSuccess}" @click="attention(value.name)">{{isAttentionSuccess?'已关注':'+关注'}}</button>
         </div>
       </div>
     </div>
@@ -28,6 +28,8 @@
   </div>
 </template>
 <script>
+
+  import {mapActions} from "vuex"
   export default{
     props:{
        value:{
@@ -41,8 +43,10 @@
                    listened:"20",
                    answered:"30",
                    position:"创投孵化器/创投总监",
-                   attention:function(){
-                       alert("关注");
+                   attention:function(param){
+                       return new Promise((resolve,reject)=>{
+                         resolve("关注成功");
+                       })
                    },
                    label:["金融服务",'企业服务','机械硬件']
                }
@@ -51,11 +55,19 @@
     },
     data(){
        return{
-
+         isAttentionSuccess:false
        }
     },
     methods:{
-    	
+      ...mapActions,
+      attention(param){
+        if(this.isAttentionSuccess) return;
+        param = JSON.stringify(param);
+        this.value.attention(param).then((res)=>{
+          this.$vux.toast.show({text:"关注成功"})
+          this.isAttentionSuccess=true;
+        });
+      }
     },
     components:{
 
@@ -63,7 +75,7 @@
   }
 </script>
 <style lang="scss" scoped>
-@import "../../../style/valiable";
+@import "../../../style/valiable.scss";
   .invest-head{
   	box-sizing:border-box;
   	padding:0.8rem;
@@ -75,6 +87,7 @@
   			float:left;
   			width:15%;
   		    height:4rem;
+        line-height:4rem;
   		    .zm-card-photo{
   		    	display:inline-block;
   		    	width:3rem;
@@ -84,11 +97,13 @@
   		    }
   		}
   		.zm-card-right{
+        box-sizing:border-box;
   			width:85%;
   			float:left;
+      padding-left:0.5rem;
   			.zm-card-header{
   				span{
-  				  margin-right:0.5rem;	
+  				  margin-right:0.5rem;
   				  color:$gray9;
   				}
   				.address{
@@ -104,8 +119,11 @@
   				}
   			}
   			.zm-card-body{
+          .position{
+            font-size:0.9rem;
+          }
   				button{
-  				  float:right;	
+  				  float:right;
   				  background:$theme;
   				  border:0;
   				  outline:0;
@@ -113,14 +131,18 @@
   				  padding:0.3rem;
   				  border-radius:2rem;
   				  color:$white;
+            font-size:0.8rem;
   				}
+          button.isAttentionSuccess{
+            background:$isAttentionColor;
+          }
   			}
   		}
   	}
   	.invest-card-body{
   		clear:both;
   		a.zm-label{
-            background:#ccc;
+            background:$textBackgroundGray;
             width:4rem;
             padding:0.3rem 0.5rem;
             border-radius:1.5rem;

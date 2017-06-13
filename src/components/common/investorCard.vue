@@ -2,62 +2,66 @@
   <div class="zm-card">
     <div class="zm-card-left">
       <div class="zm-card-photo">
-        <img :src="photo" alt="">
+        <img :src="value.photo" alt="">
       </div>
     </div>
     <div class="zm-card-middle">
        <div class="zm-card-header">
-         <span class="zm-card-title">{{title}}</span><span>{{position}}</span>
+         <span class="zm-card-title">{{value.name}}</span><span>{{value.position}}</span>
        </div>
        <div class="zm-card-body">
-         <span v-for="item in body">{{item}}</span>
+         <span v-for="item in value.fields">{{item}}</span>
        </div>
     </div>
     <div class="zm-card-right">
-       <div class="zm-card-info">{{number}}个回答</div>
-       <div class="zm-card-button"><button @click="attention">关注</button></div>
+       <div class="zm-card-info">{{value.answer}}个回答</div>
+       <div class="zm-card-button"><button :class="{'isAttentionSuccess':isAttentionSuccess}" @click="attention(value.name)">{{isAttentionSuccess?'已关注':'+关注'}}</button></div>
     </div>
   </div>
 </template>
 
 <script>
   export default {
+    mounted(){
+
+    },
     components: {
 
     },
+    methods:{
+       attention(param){
+         console.log(2333);
+         if(this.isAttentionSuccess) return;
+         param = JSON.stringify(param);
+         this.value.attention(param).then((res)=>{
+             this.$vux.toast.show({text:"关注成功.."})
+             this.isAttentionSuccess=true;
+         });
+       }
+    },
     props:{
-      photo:{
-          type:String,
-          default:""
-      },
-      title:{
-         type:String,
-         default:"姓名"
-      },
-      position:{
-         type:String,
-         default:"总监"
-      },
-      body:{
-          type:Array,
-          default:()=>["互联网","电子商务","电子商务"]
-      },
-      number:{
-          type:String,
-          default:"0"
-      },
-      attention:{
-          type:Function,
-          default:function(){
-              alert("关注");
-              return true;
-          }
-      }
+        value:{
+            type:Object,
+            default:()=>{
+                return{
+                  photo:"",
+                  name:"姓名",
+                  position:"总监",
+                  fields:["互联网","电子商务","电子商务"],
+                  attention:function(param){
+                    return new Promise((resolve,reject)=>{
+                      resolve(false);
+                    })
+                  },
+                  answer:"160",
+                }
+            }
+        }
 
     },
     data(){
       return {
-
+         isAttentionSuccess:false
       }
     }
   }
@@ -67,7 +71,7 @@
    .zm-card{
      overflow:hidden;
      color:$gray9;
-     border-top:1px solid #aaa;
+     border-top:1px solid $borderColor;
      background:#fff;
      box-sizing:border-box;
      padding:0.5rem;
@@ -108,6 +112,7 @@
          align-self:flex-end;
          span{
            margin-right:0.1rem;
+           font-size:0.8rem;
          }
        }
      }
@@ -130,6 +135,10 @@
             outline:0;
             padding:0.3rem 1rem;
             border-radius:5rem;
+            font-weight:600;
+          }
+          button.isAttentionSuccess{
+            background:$isAttentionColor;
           }
         }
      }

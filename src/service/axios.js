@@ -2,13 +2,12 @@
  * Created by gaochao on 6/9/17.
  */
 import axios from 'axios';
-import { baseUrl } from './env';
+import { baseUrl } from '../config/env';
 
 const accessToken = localStorage.getItem('accessToken');
 var fetch = axios.create({
-  baseUrl:baseUrl,
-  headers:{'Content-Type': 'application/json'}
-
+  baseUrl:"http://smile888.applinzi.com"
+  //headers:{'Content-Type': 'application/json'}
 })
 
 function json2url(json) {
@@ -28,12 +27,12 @@ var getInfo = (url='',data={},type='post') =>{
   if(type === 'get'){	//对象拼接成字符串
     var params = json2url(data);
     return fetch.get(url + '?' + params).then(function (resp) {
-      if (resp.data.data && resp.data.data.accessToken) {	//更新accessToken
-        window.localStorage.setItem('accessToken', resp.data.accessToken);
-      }
+      // if (resp.data.data && resp.data.data.accessToken) {	//更新accessToken
+      //   window.localStorage.setItem('accessToken', resp.data.accessToken);
+      // }
       return {
         success: resp.data.success,        //是否响应成功
-        data: resp.data.data || resp,   //前端展示data存储在这里（防后端把数据放到data外面导致报错）
+        data: resp.data.data || resp.data||resp,   //前端展示data存储在这里（防后端把数据放到data外面导致报错）
         error: {
           errorMsg: resp.data.message,     //报错信息
           errorCode: resp.data.code,

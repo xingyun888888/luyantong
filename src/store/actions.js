@@ -1,24 +1,34 @@
 /**
  * Created by gaochao on 6/7/17.
  */
+import  * as api  from '../service/getData';
 
-
-
-import axios from "axios"
 
 const actions={
+  /**
+   * 获得用户token
+   * @param state
+   * @param commit
+   * @returns {Promise}
+   */
   gettoken({ state,commit }){
       return new Promise((resolve, reject)=> {
         let url = window.location.href.split('#')[0];
-        axios({
-          method:'get',
-          url: 'http://smile888.applinzi.com/getToken.php',
-          params:{url}
-        }).then((response) => {
-            commit('GET_TOKEN',response)
-            resolve(response)
-        })
+        resolve(api.getToken({url}));
       })
+  },
+  /**
+   *
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  attentionInvestor({state,commit},params){
+     return new Promise((resolve,reject)=>{
+        console.log(params);
+        resolve(api.attentionInvestor(params));
+     })
   }
 }
 export default actions;

@@ -4,7 +4,6 @@
     <router-link to="timeline" tag="span" >timeline</router-link>
     <weui-distpicker></weui-distpicker>
     <div>
-      <button @click="getMsg">ddddd</button>
       <group title="$t('isLink is set to true when link exists')">
         <cell v-for="(item,index) in list" :key="index" title="$t('Go to Radio Demo')" link="/component/radio" inline-desc='link="/component/radio"'></cell>
       </group>

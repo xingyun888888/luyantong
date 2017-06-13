@@ -17,12 +17,12 @@ FastClick.attach(document.body);
 /**
  * 引入微信jssdk
  */
-import {WechatPlugin,ToastPlugin} from 'vux'
+import {WechatPlugin,ToastPlugin,ConfirmPlugin} from 'vux'
 
 Vue.use(WechatPlugin);
 Vue.use(ToastPlugin);
+Vue.use(ConfirmPlugin);
 
-console.log(Vue.wechat);
 
 //
 // Vue.config({

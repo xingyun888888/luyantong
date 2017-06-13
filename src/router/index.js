@@ -11,6 +11,9 @@ const Timeline = r => require.ensure([], () => r(require('../page/hello/Timeline
 //找投资人页面
 const invest = r => require.ensure([], () => r(require('../page/invest')), 'invest')
 const investorDetail=r => require.ensure([], () => r(require('../page/invest/children/investorDetail')), 'investorDetail')
+const  moreField=r => require.ensure([], () => r(require('../page/invest/children/moreField')), 'moreField')
+
+const investorList=r => require.ensure([], () => r(require('../page/invest/children/investorList')), 'investorList')
 /**
  * 我的主页
  */
@@ -29,7 +32,7 @@ export default new Router({
       children:[
           {
             path:"",
-            redirect:"/hello"
+            redirect:"/invest"
           },
           {
             path: '/swiper',
@@ -50,7 +53,15 @@ export default new Router({
           {
             path:"/investorDetail",
             component:investorDetail
-          }
+          },
+          {
+            path:"/moreField",
+            component:moreField
+          },
+          {
+            path:"/investorList",
+            component:investorList
+          },
       ]
     }
   ]
