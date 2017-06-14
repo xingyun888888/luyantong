@@ -44,32 +44,32 @@
     .invest-cell{
       padding:0.8rem;
       width:100%;
-      height:5rem;
-      line-height:5rem;
+      height:4rem;
+      line-height:4rem;
       box-sizing:border-box;
       border-bottom:1px solid $borderColor;
       .field-icon{
-          line-height:4rem;
+          line-height:3.6rem;
           float:left;
           width:10%;
-          height:3rem;
+          height:2.4rem;
           margin-right:0.8rem;
       }
       .fieldName{
         float:left;
         font-size:1rem;
         margin-right:1rem;
-        line-height:3rem;
+        line-height:2.4rem;
         font-weight:300;
       }
       .investorNumber{
         float:left;
-        line-height:3rem;
+        line-height:2.4rem;
         font-size:0.9rem;
       }
       .arrow-right{
         float:right;
-        line-height:4rem;
+        line-height:3.6rem;
       }
     }
 </style>

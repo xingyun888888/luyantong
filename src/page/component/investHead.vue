@@ -75,7 +75,7 @@
   }
 </script>
 <style lang="scss" scoped>
-@import "../../../style/valiable.scss";
+@import "../../style/valiable.scss";
   .invest-head{
   	box-sizing:border-box;
   	padding:0.8rem;

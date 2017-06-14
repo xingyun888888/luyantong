@@ -67,7 +67,7 @@
        display:div;
        clear:both;
     }
-    border-top:1px solid #aaa;
+    border-top:1px solid $borderColor;
     padding:0.8rem;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

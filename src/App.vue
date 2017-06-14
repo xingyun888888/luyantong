@@ -5,10 +5,6 @@
       <router-view class="router-view"></router-view>
     </transition>
     <foot-guide></foot-guide>
-
-    <!--<button @click="stopRecord">停止录音</button>-->
-    <!--<button @click="playRecord">播放录音</button>-->
-    <!--<button @touchstart="a($event)" @touchend="b($event)" class="cancelCopy">录音</button>-->
   </div>
 </template>
 
@@ -20,62 +16,20 @@ export default {
       FootGuide
     },
     mounted(){
-//      this.gettoken().then((res)=>{
-//        console.log(res.data);
-//        this.$wechat.config({
-//          debug:true,
-//          appId  : "wxda4d3c7659b5fc61",
-//          timestamp : res.data.timestamp,
-//          nonceStr :res.data.nonceStr,
-//          signature:res.data.signature,
-//          jsApiList:['onMenuShareTimeline','startRecord','stopRecord','playVoice','uploadImage','chooseImage','chooseWXPay','translateVoice']
-//        })
-//      })
+      this.gettoken().then((res)=>{
+        console.log(res.data);
+        this.$wechat.config({
+          debug:true,
+          appId  : "wxda4d3c7659b5fc61",
+          timestamp : res.data.timestamp,
+          nonceStr :res.data.nonceStr,
+          signature:res.data.signature,
+          jsApiList:['onMenuShareTimeline','startRecord','stopRecord','playVoice','uploadImage','chooseImage','chooseWXPay','translateVoice']
+        });
+      })
     },
     methods:{
       ...mapActions(["gettoken"]),
-      a(e){
-        e.preventDefault();
-        this.timer=setTimeout(()=>{
-          this.$wechat.ready(()=>{
-            this.$wechat.startRecord({
-                cancel:function(){
-                    alert("用户拒绝授权录音");
-                }
-            });
-          })
-        },400)
-      },
-      b(e){
-         e.preventDefault();
-         if(this.timer){
-           clearTimeout(this.timer);
-         }
-         this.$wechat.stopRecord({
-           success: (res)=>{
-                 this.localId = res.localId;
-           }
-        });
-      },
-      stopRecord(){
-        this.$wechat.stopRecord({
-           success: (res)=>{
-                 this.localId = res.localId;
-                 this.$wechat.translateVoice({
-                   localId:res.localId, // 需要识别的音频的本地Id，由录音相关接口获得
-                   isShowProgressTips: 1, // 默认为1，显示进度提示
-                   success: function (res) {
-                     alert(res.translateResult); // 语音识别的结果
-                   }
-                 });
-           }
-        });
-      },
-      playRecord(){
-        this.$wechat.playVoice({
-            localId: this.localId // 需要播放的音频的本地ID，由stopRecord接口获得
-        })
-      }
     },
     data(){
         return{

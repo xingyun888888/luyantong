@@ -13,13 +13,15 @@
       </grid-item>
     </grid>
     <div class="list-title">投资人列表</div>
-    <investor-card v-for="(item,index) in 10" :key="index" :value="value" ></investor-card>
+    <router-link v-for="(item,index) in 10" :key="index" to="investorDetail" >
+      <investor-card  :value="value" ></investor-card>
+    </router-link>
   </div>
 </template>
 <script>
 
    import {mapActions} from "vuex"
-   import investorCard from '../../components/common/investorCard.vue'
+   import investorCard from '../common/investorCard.vue'
    import {Grid,GridItem,GroupTitle,Search,Icon} from "vux"
    function getResult (val) {
      let rs = []

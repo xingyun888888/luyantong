@@ -14,6 +14,9 @@ const investorDetail=r => require.ensure([], () => r(require('../page/invest/chi
 const  moreField=r => require.ensure([], () => r(require('../page/invest/children/moreField')), 'moreField')
 
 const investorList=r => require.ensure([], () => r(require('../page/invest/children/investorList')), 'investorList')
+
+const questionDetail=r => require.ensure([], () => r(require('../page/invest/children/questionDetail')), 'questionDetail')
+
 /**
  * 我的主页
  */
@@ -62,6 +65,10 @@ export default new Router({
             path:"/investorList",
             component:investorList
           },
+          {
+            path:"/questionDetail",
+            component:questionDetail
+          }
       ]
     }
   ]

@@ -29,7 +29,7 @@
 
 <script>
   import { Timeline, TimelineItem, XButton } from 'vux'
-  import reSetTitleUtil from "../../components/common/RestTitle"
+  import reSetTitleUtil from "../common/RestTitle"
   let {reSetTitle}= reSetTitleUtil;
   export default {
     components: {

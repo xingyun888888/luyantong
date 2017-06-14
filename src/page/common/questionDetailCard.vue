@@ -1,0 +1,105 @@
+<template>
+  <div class="request-card">
+    <div class="card-left">
+      <div class="card-img">
+        <img src="" alt="">
+      </div>
+    </div>
+    <div class="card-right">
+      <div class="card-right-title">
+        <span class="name">{{value.name}}</span>
+        <span class="address">{{value.address}}</span>
+        <span class="price">{{"$"+value.price}}</span>
+      </div>
+      <div class="card-right-body">
+        <p>如果你无法简洁的表达你的想法，那只能说明你还不够了解它</p>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  export default{
+    props:{
+      value:{
+        type:Object,
+        default:()=>{
+          return{
+            name:"哈哈",
+            address:"北京",
+            price:160
+          }
+        }
+      }
+    },
+    data(){
+      return{
+
+      }
+    },
+    methods:{
+
+    },
+    components:{
+
+    }
+  }
+</script>
+<style lang="scss" scoped>
+  @import "../../style/valiable.scss";
+  .request-card{
+    &:after{
+       display:div;
+       clear:both;
+     }
+    padding:0.8rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height:6rem;
+    .card-left{
+      float:left;
+      width:15%;
+      height:6rem;
+    .card-img{
+      display:inline-block;
+      vertical-align:top;
+      width:4rem;
+      height:4rem;
+      border:1px solid $borderColor;
+      border-radius:50%;
+      overflow:hidden;
+      img{
+        width:100%;
+        height:100%;
+      }
+    }
+  }
+  .card-right{
+    font-weight:300;
+    float:left;
+    width:85%;
+    box-sizing:border-box;
+    padding-left:1.5rem;
+  span{
+    margin-right:0.2rem;
+  }
+  .card-right-title{
+    line-height:1.6rem;
+
+    .address{
+      color:$gray9;
+      font-size:0.9rem;
+    }
+    .price{
+       float:right;
+       color:$theme;
+       font-size:0.9rem;
+    }
+  }
+    .card-right-body{
+      clear:both;
+      font-size:0.8rem;
+    }
+  }
+  }
+</style>
