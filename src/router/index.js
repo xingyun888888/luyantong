@@ -22,6 +22,8 @@ const questionDetail=r => require.ensure([], () => r(require('../page/invest/chi
  */
 const Mine=  r => require.ensure([], () => r(require('../page/mine/mine')), 'mine')
 
+const waitAnswer = r => require.ensure([],()=>r(require('../page/mine/children/waitAnswer')),'waitAnswer')
+
 
 
 Vue.use(Router)
@@ -45,6 +47,7 @@ export default new Router({
             path: '/timeline',
             component: Timeline
           },
+        //找投资的页面
           {
             path:"/hello",
             component:hello
@@ -68,6 +71,11 @@ export default new Router({
           {
             path:"/questionDetail",
             component:questionDetail
+          },
+          //我的资料页面
+          {
+            path:"/waitAnswer",
+            component:waitAnswer
           }
       ]
     }

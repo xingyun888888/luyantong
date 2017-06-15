@@ -29,6 +29,19 @@ const actions={
         console.log(params);
         resolve(api.attentionInvestor(params));
      })
+  },
+  /**
+   *
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  getQuestion({state,commit},params){
+    return new Promise((resolve,reject)=>{
+      console.log(params);
+      resolve(api.getQuestion(params));
+    })
   }
 }
 export default actions;

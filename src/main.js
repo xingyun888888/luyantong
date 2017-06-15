@@ -10,6 +10,8 @@ import store from "./store"
 
 import {sync} from 'vuex-router-sync'
 
+require("./config/rem.js");
+
 const FastClick = require('fastclick')
 
 FastClick.attach(document.body);

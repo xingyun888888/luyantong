@@ -15,7 +15,7 @@
     </div>
     <div class="zm-card-right">
        <div class="zm-card-info">{{value.answer}}个回答</div>
-       <div class="zm-card-button"><button :class="{'isAttentionSuccess':isAttentionSuccess}" @click="attention(value.name)">{{isAttentionSuccess?'已关注':'+关注'}}</button></div>
+       <div class="zm-card-button"><button :class="{'isAttentionSuccess':isAttentionSuccess}" @click="attention($event,value.name)">{{isAttentionSuccess?'已关注':'+关注'}}</button></div>
     </div>
   </div>
 </template>
@@ -29,7 +29,8 @@
 
     },
     methods:{
-       attention(param){
+       attention(e,param){
+         e.preventDefault();
          console.log(2333);
          if(this.isAttentionSuccess) return;
          param = JSON.stringify(param);
@@ -46,7 +47,7 @@
                 return{
                   photo:"",
                   name:"姓名",
-                  position:"总监",
+                  position:"创投孵化器/创投总监",
                   fields:["互联网","电子商务","电子商务"],
                   attention:function(param){
                     return new Promise((resolve,reject)=>{
@@ -71,7 +72,7 @@
    .zm-card{
      overflow:hidden;
      color:$gray9;
-     border-top:1px solid $borderColor;
+     border-bottom:1px solid $borderColor;
      background:#fff;
      box-sizing:border-box;
      padding:0.5rem;
@@ -86,11 +87,11 @@
          height:4rem;
          display:inline-block;
          border-radius:50%;
-         border:1px solid #aaa;
+         border:1px solid $borderColor;
          img{
            width:100%;
            height:100%;
-           vertical-align:bottom;
+           vertical-align:middle;
          }
       }
      }
@@ -102,16 +103,20 @@
        flex-direction:column;
        font-size:0.9rem;
        .zm-card-header{
+         color:$gray3;
          align-self:flex-start;
          flex:1;
+         span{
+           font-weight:500;
+         }
          .zm-card-title{
            margin-right:0.5rem;
          }
        }
        .zm-card-body{
-         align-self:flex-end;
+         align-self:flex-start;
          span{
-           margin-right:0.1rem;
+           margin-right:0.3rem;
            font-size:0.8rem;
          }
        }

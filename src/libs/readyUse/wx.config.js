@@ -30,7 +30,7 @@
 import Vue from 'vue'
 import Axios from 'axios'
 import {WechatPlugin} from 'vux'
-import wxBaseConfig from './wx.base'
+import wxBaseConfig from '../../config/wx.base'
 
 export default function (userConfig) {
   let wx = WechatPlugin.$wechat;

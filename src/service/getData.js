@@ -15,7 +15,7 @@ var getToken=(params) =>getInfo(serviceUrl,params,'get');
 var attentionInvestor=(params) =>getInfo(serviceUrl,params,'post');
 
 
-
+var getQuestion=(params) => getInfo(serviceUrl,params,'get');
 
 
 
@@ -46,7 +46,7 @@ export {
   login,              //登录
   getToken,           //获取用户token
   attentionInvestor,  //关注投资人
-
+  getQuestion,        //获得投资人问题
 
 
 
