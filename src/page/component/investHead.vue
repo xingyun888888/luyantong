@@ -8,7 +8,7 @@
       </div>
       <div class="zm-card-right">
         <div class="zm-card-header">
-          <span class="zm-card-title">{{value.name}}</span>
+          <span class="name">{{value.name}}</span>
           <span class="address">{{value.address}}</span>
           <span class="answer-nummber">{{value.answered}}个回答</span>
           <span class="listened-number">{{value.listened}}人关注</span>
@@ -86,26 +86,40 @@
   		.zm-card-left{
   			float:left;
   			width:15%;
-  		    height:4rem;
-        line-height:4rem;
+  		  height:5rem;
+        line-height:5rem;
   		    .zm-card-photo{
   		    	display:inline-block;
-  		    	width:3rem;
-  		    	height:3rem;
+  		    	width:4rem;
+  		    	height:4rem;
   		    	border-radius:50%;
   		    	border:1px solid #aaa;
   		    }
   		}
   		.zm-card-right{
         box-sizing:border-box;
+        flex-direction:column;
+        justify-content:space-between;
+        display:flex;
   			width:85%;
   			float:left;
-      padding-left:0.5rem;
+        height:4rem;
+        font-weight:700;
+        padding-left:1rem;
+
   			.zm-card-header{
+          align-self:flex-start;
+          height:2rem;
+          line-height:2rem;
+          width:100%;
   				span{
   				  margin-right:0.5rem;
   				  color:$gray9;
   				}
+          .name{
+            font-size:0.9rem;
+            color:$gray3;
+          }
   				.address{
   					font-size:0.9rem;
   				}
@@ -128,7 +142,7 @@
   				  border:0;
   				  outline:0;
   				  width:4rem;
-  				  padding:0.3rem;
+  				  padding:0.2rem 0.3rem;
   				  border-radius:2rem;
   				  color:$white;
             font-size:0.8rem;
@@ -140,21 +154,21 @@
   		}
   	}
   	.invest-card-body{
+      margin:0.8rem 0;
   		clear:both;
   		a.zm-label{
             background:$textBackgroundGray;
             width:4rem;
-            padding:0.3rem 0.5rem;
+            padding:0.3rem 0.6rem;
             border-radius:1.5rem;
-            font-size:0.9rem;
+            font-size:0.8rem;
             margin-right:0.5rem;
-            color:$gray3;
+            color:$gray9;
   		}
   	}
   	.invest-card-foot{
-  		margin-top:1rem;
-  		font-size:0.9rem;
-  		color:$gray3;
+  		font-size:0.8rem;
+  		color:$gray9;
   	}
   }
 

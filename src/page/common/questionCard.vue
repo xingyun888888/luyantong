@@ -88,14 +88,13 @@
     height:6rem;
     .card-left{
       float:left;
-      width:15%;
-      height:6rem;
+      width:20%;
+      height:5rem;
       .card-img{
         display:inline-block;
         vertical-align:top;
         width:4rem;
         height:4rem;
-        border:1px solid $borderColor;
         border-radius:50%;
         overflow:hidden;
         img{
@@ -107,27 +106,33 @@
     .card-right{
       font-weight:300;
       float:left;
-      width:85%;
+      width:80%;
       box-sizing:border-box;
-      padding-left:1.5rem;
+      /*padding-left:1.5rem;*/
       span{
         margin-right:0.2rem;
       }
       .card-right-title{
         line-height:1.6rem;
-
+        .name{
+          font-size:0.9rem;
+        }
         .address{
-          color:$gray9;
+          color:$gray6;
           font-size:0.9rem;
         }
         .listened{
-          font-size:0.8rem;
+          font-size:0.9rem;
           float:right;
+          color:$gray6;
+          margin-right:0.8rem;
         }
         button{
           width:5rem;
-          padding:0.3rem 0;
+          height:1.4rem;
+          line-height:1.4rem;
           background:$theme;
+          font-weight:600;
           border:0;
           outline:0;
           color:$white;
@@ -138,6 +143,7 @@
       .card-right-body{
         clear:both;
         font-size:0.8rem;
+        color:$gray9;
       }
     }
   }
