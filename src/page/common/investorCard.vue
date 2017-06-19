@@ -136,6 +136,7 @@
           button{
             background:$theme;
             color:$white;
+            font-size:0.7rem;
             border:0;
             outline:0;
             padding:0.3rem 1rem;

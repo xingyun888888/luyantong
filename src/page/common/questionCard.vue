@@ -2,7 +2,7 @@
    <div class="request-card">
      <div class="card-left">
         <div class="card-img">
-          <img src="" alt="">
+          <img :src="value.photo" alt="" >
         </div>
      </div>
      <div class="card-right">
@@ -25,10 +25,11 @@
           type:Object,
           default:()=>{
               return{
-                  name:"哈哈",
+                  photo:"/static/images/bitmap.png",
+                  name:"王强",
                   address:"北京",
-                  listened:"12",
-                  listenPrice:"1",
+                  listened:"12000",
+                  listenPrice:"100",
                   pay:(price)=>{
                       alert("确认是否支付"+price+"元");
                   }
@@ -116,23 +117,25 @@
         line-height:1.6rem;
         .name{
           font-size:0.9rem;
+          font-weight:500;
         }
         .address{
           color:$gray6;
           font-size:0.9rem;
+          font-weight:500;
         }
         .listened{
           font-size:0.9rem;
           float:right;
           color:$gray6;
           margin-right:0.8rem;
+          font-weight:500;
         }
         button{
-          width:5rem;
-          height:1.4rem;
-          line-height:1.4rem;
+          padding:0.2rem 0.5rem;
           background:$theme;
-          font-weight:600;
+          font-weight:400;
+          font-size:0.7rem;
           border:0;
           outline:0;
           color:$white;
@@ -143,7 +146,8 @@
       .card-right-body{
         clear:both;
         font-size:0.8rem;
-        color:$gray9;
+        color:$gray6;
+        font-weight:500;
       }
     }
   }

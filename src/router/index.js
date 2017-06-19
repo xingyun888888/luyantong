@@ -20,11 +20,17 @@ const questionDetail=r => require.ensure([], () => r(require('../page/invest/chi
 /**
  * 我的主页
  */
-const Mine=  r => require.ensure([], () => r(require('../page/mine/mine')), 'mine')
+const mine=  r => require.ensure([], () => r(require('../page/mine/mine')), 'mine')
 
-const waitAnswer = r => require.ensure([],()=>r(require('../page/mine/children/waitAnswer')),'waitAnswer')
+const waitAnswerDetail = r => require.ensure([],()=>r(require('../page/mine/children/waitAnswerDetail')),'waitAnswerDetail')
 
+const myAnswer = r =>require.ensure([],()=>r(require('../page/mine/children/myAnswer')),'myAnswer')
 
+const waitAnswer = r =>require.ensure([],()=>r(require('../page/component/waitAnswer')),'waitAnswer')
+
+const answered=r => require.ensure([],()=>r(require('../page/component/answered')),'answered')
+
+const myQuestion=r => require.ensure([],()=>r(require('../page/mine/children/myQuestion')),'myQuestion')
 
 Vue.use(Router)
 
@@ -74,9 +80,31 @@ export default new Router({
           },
           //我的资料页面
           {
-            path:"/waitAnswer",
-            component:waitAnswer
-          }
+             path:"/mine",
+             component:mine
+          },
+        {
+          path:"/waitAnswerDetail",
+          component:waitAnswerDetail
+        },
+        {
+          path:"/myAnswer",
+          component:myAnswer,
+          children:[
+            {
+              path:"/waitAnswer",
+              component:waitAnswer
+            },
+            {
+              path:"/answered",
+              component:answered
+            }
+          ]
+        },
+        {
+          path:"/myQuestion",
+          component:myQuestion
+        }
       ]
     }
   ]

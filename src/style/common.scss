@@ -135,3 +135,26 @@ html,body{
 font-weight:400;
 font-size:1rem;
 }
+
+
+.question-msg{
+  text-align:center;
+  padding:0.8rem;
+  font-size:0.9rem;
+  color:#999;
+}
+.weui-cells>.weui-cell{
+  padding:0.7rem 0.8rem;
+}
+/**
+  tab样式
+ */
+div.vux-tab
+{
+  height:3rem;
+  &>div.vux-tab-item{
+    height:3rem;
+    font-size:1rem;
+    line-height:3rem;
+  }
+}

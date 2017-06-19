@@ -1,8 +1,8 @@
 <template>
    <div class="quest-container">
-     <h4>我要提问:</h4>
-     <textarea name="" cols="30" rows="10" class="description" placeholder="dsfdsfsd"></textarea>
-     <textarea name="" cols="30" rows="10" class="detail" placeholder="dfsdfsd"></textarea>
+     <h4 class="zm-title">我要提问 :</h4>
+     <textarea name="" cols="30" rows="10" class="description" placeholder="请输入文本   （一句话概括，将显示在主页展示中，以便投资人精准阅读，若未填写，将筛取问题描述的前20字） "></textarea>
+     <textarea name="" cols="30" rows="10" class="detail" placeholder="向王强递交BP，等待反馈。请详细说明你的项目，建议对可展示的对外运营数据多加描述，在下方依次上传BP图片，展示顺序以上传顺序为准72小时未得到反馈自动退款。"></textarea>
      <uploader
        :max="varmax"
        :images="images"
@@ -10,6 +10,8 @@
        :show-header="true"
        :readonly="false"
        :autoUpload="false"
+       title=""
+       :showHeader="false"
        size="normal"
        @preview="previewMethod"
        @add-image="addImageMethod"
@@ -23,35 +25,45 @@
      <div>
        <x-button type="primary" @click.native="pay">需支付{{price}} 元，确认提交</x-button>
      </div>
-     <x-dialog v-model="show" class="dialog-demo">
-       <div class="img-box">
-         <img :src="showImgUrl" style="max-width:100%">
-       </div>
-       <div @click="show=false">
-         <span class="vux-close">
-           <svg t="1497436283912" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12306" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><path d="M184.64768 836.34176c3.9936 3.9936 9.23648 5.98016 14.47936 5.98016 5.24288 0 10.48576-2.00704 14.49984-6.00064l292.70016-293.04832 292.70016 293.04832c3.9936 4.01408 9.23648 6.00064 14.49984 6.00064 5.24288 0 10.48576-2.00704 14.47936-5.98016 8.00768-7.9872 8.00768-20.95104 0.02048-28.95872L535.61344 514.64192 828.0064 221.92128c7.9872-8.00768 7.9872-20.97152-0.02048-28.95872-8.02816-8.00768-20.97152-8.00768-28.95872 0.02048L506.30656 486.03136 213.6064 192.98304c-8.00768-8.00768-20.97152-8.00768-28.95872-0.02048-8.00768 7.9872-8.00768 20.95104-0.02048 28.95872l292.37248 292.72064L184.6272 807.38304C176.64 815.37024 176.64 828.35456 184.64768 836.34176z" p-id="12307" fill="#bfbfbf"></path></svg>
-         </span>
-       </div>
-     </x-dialog>
+     <div v-transfer-dom >
+       <previewer :list="showImgs" ref="previewer" :options="options"></previewer>
+     </div>
    </div>
 </template>
 <script>
   import Uploader from 'vux-uploader'
-  import {XButton,XDialog} from "vux"
+  import {XButton,Previewer,TransferDom} from "vux"
 
   export default{
+      directives: {
+        TransferDom
+      },
       data(){
         return{
-          show: false,//是否放大预览图片
           price:"",
           uploadImg:{
             localId: [],
             serverId: []
           },
           images:[],//图片地址存储的数组
+          showImgs:[],//预览图片的数组
           uploadUrl:"http://192.168.1.57/upload.php",//上传到后端服务器的地址
-          varmax:3,
-          showImgUrl:""//预览图片的地址
+          varmax:10,
+          options: {
+            getThumbBoundsFn (index) {
+              // find thumbnail element
+              let thumbnail = document.querySelectorAll('.quest-container .weui-uploader__files .weui-uploader__file')[index];
+              // get window scroll Y
+              let pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+              // optionally get horizontal scroll
+              // get position of element relative to viewport
+              let rect = thumbnail.getBoundingClientRect();
+              // w = width
+              return {x: rect.left, y: rect.top + pageYScroll, w: rect.width};
+              // Good guide on how to get element coordinates:
+              // http://javascript.info/tutorial/coordinates
+            }
+          }
         }
       },
       methods:{
@@ -68,9 +80,15 @@
            })
         },
         previewMethod({url}){
-           console.log("预览图片"+url);
-           this.showImgUrl=url;
-           this.show=true;
+            console.log("预览图片"+url);
+            let index;
+            for(let i=0;i<this.showImgs.length;i++){
+                 if(this.showImgs[i].src==url){
+                     index=i;
+                     break;
+                 }
+            }
+           this.$refs.previewer.show(index);
         },
         addImageMethod(){
           console.log("新增图片...");
@@ -81,6 +99,7 @@
               _this.$vux.toast.show({text:'已选择 ' + res.localIds.length + ' 张图片'});
               res.localIds.forEach((item,index)=>{
                   _this.images.push({url:item});
+                  _this.showImgs.push({src:item,w:800,h:400});
               })
             }
           })
@@ -88,10 +107,11 @@
         removeImageMethod(){
            console.log("删除图片...");
            this.images.pop();
+           this.showImgs.pop();
         }
       },
       components:{
-         Uploader,XButton,XDialog
+         Uploader,XButton,Previewer
       }
   }
 </script>
@@ -99,18 +119,14 @@
   @import "../../style/valiable.scss";
   .quest-container{
     padding:0.8rem;
-    h4{
-      font-weight:300;
-      margin:0.5rem 0;
-    }
     textarea{
       box-sizing:border-box;
-      border:1px dashed #666;
+      border:1px dashed #ccc;
       font-weight:300;
       padding:0.5rem;
-      background:#f2f2f2;
+      background:#f5f5f5;
       color:#666;
-      font-size:1rem;
+      font-size:0.8rem;
       resize:none;
       width:100%;
     }
@@ -124,19 +140,20 @@
       font-size:0.9rem;
       height:3rem;
       box-sizing:border-box;
-      padding:0 0.8rem;
+      text-align:center;
       color:$gray6;
        input{
          vertical-align:middle;
          margin-right:0.3rem;
        }
       .suggest{
-         padding-left:1rem;
-         font-size:0.8rem;
-         color:$gray9;
+         padding-left:1.5rem;
+         font-size:0.9rem;
+         color:$theme;
       }
     }
     .weui-cell{
+      padding:10px 0;
        &:before{
           border:0;
         }
@@ -146,15 +163,13 @@
       font-size:0.9rem;
       background:$theme;
     }
-    .dialog-demo {
-      .img-box {
-        height: 350px;
-        overflow: hidden;
-      }
-      .vux-close {
-        margin-top: 8px;
-        margin-bottom: 8px;
-      }
+    .zm-title{
+      height:1rem;
+      line-height:1rem;
+      color:#1b5bb5;
+      font-weight:500;
+      margin:0.5rem 0;
+      font-size:0.9rem;
     }
   }
 </style>

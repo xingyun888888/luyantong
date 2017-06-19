@@ -2,7 +2,6 @@
   <div class="hello">
     <router-link to="swiper" tag="span">swiper</router-link>
     <router-link to="timeline" tag="span" >timeline</router-link>
-    <weui-distpicker></weui-distpicker>
     <div>
       <group title="$t('isLink is set to true when link exists')">
         <cell v-for="(item,index) in list" :key="index" title="$t('Go to Radio Demo')" link="/component/radio" inline-desc='link="/component/radio"'></cell>

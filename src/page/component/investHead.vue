@@ -36,12 +36,12 @@
            type:Object,
            default:()=>{
                return{
-                   photo:"",
+                   photo:"/static/images/bitmap.png",
                    address:"北京",
                    name:"王强",
                    number:"12",
-                   listened:"20",
-                   answered:"30",
+                   listened:"2044354",
+                   answered:"30000",
                    position:"创投孵化器/创投总监",
                    attention:function(param){
                        return new Promise((resolve,reject)=>{
@@ -93,7 +93,10 @@
   		    	width:4rem;
   		    	height:4rem;
   		    	border-radius:50%;
-  		    	border:1px solid #aaa;
+            img{
+              width:100%;
+              height:100%;
+            }
   		    }
   		}
   		.zm-card-right{
@@ -117,6 +120,7 @@
   				  color:$gray9;
   				}
           .name{
+            font-weight:500;
             font-size:0.9rem;
             color:$gray3;
           }
@@ -135,6 +139,7 @@
   			.zm-card-body{
           .position{
             font-size:0.9rem;
+            font-weight:500;
           }
   				button{
   				  float:right;
@@ -168,7 +173,8 @@
   	}
   	.invest-card-foot{
   		font-size:0.8rem;
-  		color:$gray9;
+  		color:$gray6;
+      font-weight:500;
   	}
   }
 
