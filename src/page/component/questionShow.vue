@@ -3,8 +3,8 @@
        <div class="date-and-time">
          {{new Date().toString()}}
        </div>
-       <div class="title">
-         他提出的问题
+       <div class="zm-title">
+         他提出的问题:
        </div>
        <div class="content">
          <p>
@@ -49,7 +49,7 @@
              type:Object,
              default:()=>{
                  return{
-                     images:["http://img3.redocn.com/tupian/20151013/keaikatongbeijingtupian_5087376.jpg","http://img3.redocn.com/tupian/20151013/keaikatongbeijingtupian_5087376.jpg","http://img3.redocn.com/tupian/20151013/keaikatongbeijingtupian_5087376.jpg","http://img3.redocn.com/tupian/20151013/keaikatongbeijingtupian_5087376.jpg"]
+                     images:["http://pic.58pic.com/58pic/15/15/10/24v58PICkd6_1024.jpg","http://pic.58pic.com/58pic/15/15/10/24v58PICkd6_1024.jpg","http://pic.58pic.com/58pic/15/15/10/24v58PICkd6_1024.jpg","http://pic.58pic.com/58pic/15/15/10/24v58PICkd6_1024.jpg"]
                  }
              }
           }
@@ -80,19 +80,20 @@
 <style lang="scss" scoped>
    @import "../../style/valiable.scss";
    .question-show-container{
-      padding:0.8rem;
+      padding:1rem 0.8rem;
+      margin:1rem 0;
       font-size:0.8rem;
       box-sizing:border-box;
       .date-and-time{
         color:$gray6;
-      }
-      .title{
-         margin:0.3rem 0;
+        font-size:0.8rem;
       }
       .content{
-
+         color:$gray6;
+         padding:0 0.5rem;
       }
       .img-show{
+         padding:0.5rem;
          display: flex;
          justify-content:space-between;
          flex-wrap:wrap;

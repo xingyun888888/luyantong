@@ -24,7 +24,6 @@
 
   import { Cell,Group } from 'vux'
 
-  import WeuiDistpicker from "weui-distpicker"
 
   export default {
   name: 'hello',

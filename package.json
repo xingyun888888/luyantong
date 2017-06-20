@@ -19,8 +19,7 @@
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.2.0",
     "vux": "^2.3.4",
-    "vux-uploader": "^0.1.6",
-    "weui-distpicker": "^0.1.0"
+    "vux-uploader": "^0.1.6"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

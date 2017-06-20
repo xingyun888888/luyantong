@@ -137,6 +137,14 @@ font-size:1rem;
 }
 
 
+.zm-title{
+  height:1rem;
+  line-height:1rem;
+  color:#1b5bb5;
+  font-weight:500;
+  margin:0.5rem 0;
+  font-size:0.9rem;
+}
 .question-msg{
   text-align:center;
   padding:0.8rem;
@@ -158,3 +166,169 @@ div.vux-tab
     line-height:3rem;
   }
 }
+
+#app{
+  /*上传图片*/
+  div.weui-uploader__input-box{
+    width:5rem;
+    height:5rem;
+  }
+  /*搜索框*/
+  .weui-search-bar__box{
+    padding-left:2.2rem;
+    input.weui-search-bar__input{
+      width:80%;
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:1rem
+    }
+    .weui-icon-clear{
+      font-size:1rem;
+      top:50%;
+      transform:translateY(-50%);
+    }
+  }
+  .weui-cells.vux-search_show{
+    p{
+      font-size:1rem;
+    }
+  }
+  .weui-search-bar{
+     padding:0.4rem 0.7rem;
+    .weui-icon-search{
+       font-size:1rem;
+       line-height:1.6rem;
+       top:50%;
+       transform:translateY(-50%);
+    }
+    .weui-search-bar__cancel-btn{
+      line-height:2rem;
+    }
+  }
+  .weui-cells{
+    font-size:1.2rem;
+    &:before,&:after{
+      border:0;
+    }
+    .weui-cell__ft{
+      padding-right:1rem;
+      &:after{
+        width:0.6rem;
+        height:0.6rem;
+        border-width:1.5px 1.5px 0 0 ;
+      }
+    }
+  }
+  /*多选框*/
+  .weui-cells.weui-cells_checkbox{
+    &:before,&:after{
+      border:0;
+      height:0;
+    }
+    .weui-cell.weui-check_label{
+      &:before,&:after{
+        border:0;
+        height:0;
+      }
+
+      .weui-cell__hd{
+        i{
+          &:before{
+            font-size:1.1rem;
+          }
+        }
+      }
+      p{
+        display:inline-block;
+        color:#666;
+        font-size:0.9rem;
+      }
+      .weui-check:checked+.weui-icon-checked:before{
+        color:#539ffd;
+      }
+    }
+  }
+  /**
+    单选框
+   */
+  .weui-cells_radio{
+    .weui-cell.weui-cell_radio.weui-check__label{
+      padding:0.7rem 0.8rem;
+      &:before,&:after{
+        border:0;
+        height:0;
+      }
+      .weui-cell__ft{
+        span{
+          &:before{
+            font-size:1.1rem;
+          }
+        }
+      }
+      p{
+        display:inline-block;
+        font-size:0.9rem;
+        color:#666;
+      }
+      .weui-check:checked+.weui-icon-checked:before{
+        color:#539ffd;
+      }
+    }
+  }
+  /**
+    文本域
+   */
+  .weui-cell.vux-x-textarea{
+     .weui-cell__bd{
+       textarea{
+         border:1px dashed #ccc;
+         font-size:0.9rem;
+         padding:0.5rem;
+         color:#666;
+         height:12rem;
+       }
+     }
+  }
+  /**
+     x-button
+   */
+  button.weui-btn.weui-btn_primary{
+    font-size:1rem;
+  }
+  .weui-btn_disabled.weui-btn_primary{
+     background: #539ffd;
+     color:#fff;
+     cursor:not-allowed;
+     font-size:1rem;
+     opacity:0.6;
+  }
+
+
+  /**
+     地址选择
+   */
+    .vux-cell-box{
+      &:before{
+        border:0;
+      }
+      .weui-cell.vux-tap-active.weui-cell_access{
+         .vux-popup-picker-placeholder{
+           font-size:1rem;
+         }
+        .vux-cell-primary.vux-popup-picker-select-box{
+          flex:initial;
+          align-self:flex-start;
+        }
+        .vux-popup-picker-value{
+          font-size:1rem;
+          color:#666;
+        }
+        .weui-cell__ft{
+          &:after{
+          }
+        }
+      }
+    }
+}
+

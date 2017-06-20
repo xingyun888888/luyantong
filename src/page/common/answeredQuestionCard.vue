@@ -50,6 +50,7 @@
 <style lang="scss" scoped>
   @import "../../style/valiable.scss";
   .request-card{
+    border-bottom:2px solid $borderColor;
   &:after{
      display:div;
      clear:both;
@@ -102,7 +103,7 @@
   }
   .price{
     float:right;
-    color:$theme;
+    color:$red;
     font-size:0.9rem;
     font-weight:500;
   }

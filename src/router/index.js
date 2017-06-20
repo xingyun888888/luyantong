@@ -32,6 +32,8 @@ const answered=r => require.ensure([],()=>r(require('../page/component/answered'
 
 const myQuestion=r => require.ensure([],()=>r(require('../page/mine/children/myQuestion')),'myQuestion')
 
+const investPreference =r =>require.ensure([],()=>r(require("../page/mine/children/investPreference")),'investPreference')
+
 Vue.use(Router)
 
 export default new Router({
@@ -83,29 +85,33 @@ export default new Router({
              path:"/mine",
              component:mine
           },
-        {
-          path:"/waitAnswerDetail",
-          component:waitAnswerDetail
-        },
-        {
-          path:"/myAnswer",
-          component:myAnswer,
-          children:[
-            {
-              path:"/waitAnswer",
-              component:waitAnswer
-            },
-            {
-              path:"/answered",
-              component:answered
-            }
-          ]
-        },
-        {
-          path:"/myQuestion",
-          component:myQuestion
-        }
-      ]
-    }
-  ]
+          {
+            path:"/waitAnswerDetail",
+            component:waitAnswerDetail
+          },
+          {
+            path:"/myAnswer",
+            component:myAnswer,
+            children:[
+              {
+                path:"/waitAnswer",
+                component:waitAnswer
+              },
+              {
+                path:"/answered",
+                component:answered
+              }
+            ]
+          },
+          {
+            path:"/myQuestion",
+            component:myQuestion
+          },
+          {
+            path:"/investPreference",
+            component:investPreference
+          }
+       ]
+     }
+    ]
 })

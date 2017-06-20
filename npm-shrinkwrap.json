@@ -205,40 +205,6 @@
       "version": "0.1.6",
       "from": "vux-uploader@latest",
       "resolved": "https://registry.npmjs.org/vux-uploader/-/vux-uploader-0.1.6.tgz"
-    },
-    "weui-distpicker": {
-      "version": "0.1.0",
-      "from": "weui-distpicker@0.1.0",
-      "resolved": "http://registry.npm.taobao.org/weui-distpicker/download/weui-distpicker-0.1.0.tgz",
-      "dependencies": {
-        "vue": {
-          "version": "2.3.3",
-          "from": "vue@2.3.3",
-          "resolved": "http://registry.npm.taobao.org/vue/download/vue-2.3.3.tgz"
-        },
-        "weui.js": {
-          "version": "1.1.1",
-          "from": "weui.js@1.1.1",
-          "resolved": "http://registry.npm.taobao.org/weui.js/download/weui.js-1.1.1.tgz",
-          "dependencies": {
-            "balajs": {
-              "version": "0.1.9",
-              "from": "balajs@0.1.9",
-              "resolved": "http://registry.npm.taobao.org/balajs/download/balajs-0.1.9.tgz"
-            },
-            "element-closest": {
-              "version": "2.0.2",
-              "from": "element-closest@2.0.2",
-              "resolved": "http://registry.npm.taobao.org/element-closest/download/element-closest-2.0.2.tgz"
-            },
-            "object-assign": {
-              "version": "4.1.1",
-              "from": "object-assign@4.1.1",
-              "resolved": "http://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz"
-            }
-          }
-        }
-      }
     }
   }
 }

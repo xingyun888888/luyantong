@@ -3,7 +3,7 @@
      <mine-home-header></mine-home-header>
      <div class="zm-split-line"></div>
      <group>
-       <cell title="投资偏好" is-link>
+       <cell title="投资偏好" :link="{path:'investPreference'}">
          <svg width="1rem" slot="icon" height="0.8rem" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
            <!-- Generator: sketchtool 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
            <title>0A444A44-6948-44DF-AF4D-F244E3DDBFE9</title>
@@ -273,7 +273,11 @@
 <script>
   import MineHomeHeader from '../component/mineHomeHeader.vue';
   import {CellBox,Group,Cell} from 'vux';
+  import reSetTitleUtil from "../common/RestTitle"
   export default{
+      mounted(){
+        reSetTitleUtil.reSetTitle("我的主页");
+      },
       data(){
           return{
 

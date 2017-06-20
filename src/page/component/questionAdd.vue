@@ -19,7 +19,7 @@
      ></uploader>
      <!--选择领域-->
      <div class="isPublic">
-       <p><input type="checkbox"  /><span>私密提问加50元,您的问题仅恁与投资人可见</span></p>
+       <p><input type="checkbox" class="isPrivate" /><span>私密提问加50元,您的问题仅恁与投资人可见</span></p>
        <p class="suggest">建议您公开提问，让更多的人看到您的需求</p>
      </div>
      <div>
@@ -142,9 +142,11 @@
       box-sizing:border-box;
       text-align:center;
       color:$gray6;
-       input{
+       input.isPrivate{
          vertical-align:middle;
          margin-right:0.3rem;
+         width:0.9rem;
+         height:0.9rem;
        }
       .suggest{
          padding-left:1.5rem;
@@ -162,14 +164,6 @@
       font-weight:300;
       font-size:0.9rem;
       background:$theme;
-    }
-    .zm-title{
-      height:1rem;
-      line-height:1rem;
-      color:#1b5bb5;
-      font-weight:500;
-      margin:0.5rem 0;
-      font-size:0.9rem;
     }
   }
 </style>

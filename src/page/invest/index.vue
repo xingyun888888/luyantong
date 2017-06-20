@@ -63,6 +63,7 @@
    import investorCard from '../common/investorCard.vue'
    import {Grid,GridItem,GroupTitle,Search,Icon} from "vux"
    import InfiniteLoading from 'vue-infinite-loading';
+   import reSetTitleUtil from "../common/RestTitle"
    function getResult (val) {
      let rs = []
      for (let i = 0; i < 20; i++) {
@@ -75,7 +76,7 @@
    }
    export default {
        mounted(){
-         console.log(this);
+         reSetTitleUtil.reSetTitle("找投资");
        },
 
        data(){

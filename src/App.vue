@@ -16,17 +16,17 @@ export default {
       FootGuide
     },
     mounted(){
-      this.gettoken().then((res)=>{
-        console.info("res.data:"+res.data);
-        this.$wechat.config({
-          //debug:true,
-          appId  : "wxda4d3c7659b5fc61",
-          timestamp : res.data.timestamp,
-          nonceStr :res.data.nonceStr,
-          signature:res.data.signature,
-          jsApiList:['onMenuShareTimeline','startRecord','stopRecord','playVoice','uploadImage','chooseImage','chooseWXPay','translateVoice']
-        });
-      })
+//      this.gettoken().then((res)=>{
+//        console.info("res.data:"+res.data);
+//        this.$wechat.config({
+//          debug:true,
+//          appId  : "wxda4d3c7659b5fc61",
+//          timestamp : res.data.timestamp,
+//          nonceStr :res.data.nonceStr,
+//          signature:res.data.signature,
+//          jsApiList:['onMenuShareTimeline','startRecord','stopRecord','playVoice','uploadImage','chooseImage','chooseWXPay','translateVoice']
+//        });
+//      })
     },
     methods:{
       ...mapActions(["gettoken"]),

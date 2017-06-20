@@ -11,14 +11,16 @@
 </template>
 <script>
   import {Tab,TabItem} from 'vux';
+  import reSetTitleUtil from "../../common/RestTitle"
   export default{
+    mounted(){
+      reSetTitleUtil.reSetTitle("我的回答");
+      this.$router.push("waitAnswer");
+    },
     data(){
         return {
 
         }
-    },
-    mounted(){
-      this.$router.push("waitAnswer");
     },
     methods:{
       onItemClick (index) {

@@ -70,7 +70,7 @@
 <style lang="scss" scoped>
   @import "../../style/valiable.scss";
   .record-voice-container{
-     padding:0.8rem;
+     padding:1rem 0.8rem;
      .title{
        font-size:0.9rem;
      }

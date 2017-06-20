@@ -45,7 +45,7 @@
             type:Object,
             default:()=>{
                 return{
-                  photo:"",
+                  photo:"/static/images/photo.png",
                   name:"姓名",
                   position:"创投孵化器/创投总监",
                   fields:["互联网","电子商务","电子商务"],
@@ -87,7 +87,6 @@
          height:4rem;
          display:inline-block;
          border-radius:50%;
-         border:1px solid $borderColor;
          img{
            width:100%;
            height:100%;

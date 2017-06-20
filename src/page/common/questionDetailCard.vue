@@ -27,7 +27,7 @@
             photo:"/static/images/bitmap.png",
             name:"王强",
             address:"北京",
-            price:160
+            price:Number(160).toFixed(2)
           }
         }
       }
@@ -48,6 +48,7 @@
 <style lang="scss" scoped>
   @import "../../style/valiable.scss";
   .request-card{
+      border-bottom:2px solid $borderColor;
       &:after{
          display:div;
          clear:both;
@@ -95,7 +96,7 @@
       }
       .price{
          float:right;
-         color:$theme;
+         color:$red;
          font-size:0.9rem;
          font-weight:500;
       }

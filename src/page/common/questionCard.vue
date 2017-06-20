@@ -9,7 +9,7 @@
         <div class="card-right-title">
           <span class="name">{{value.name}}</span>
           <span class="address">{{value.address}}</span>
-          <button class="will-pay-listen" @click="pay(value.listenPrice)">{{value.listenPrice}}元偷听</button>
+          <button class="will-pay-listen" @click="pay($event,value.listenPrice)">{{value.listenPrice}}元偷听</button>
           <span class="listened">{{value.listened}}人偷听</span>
         </div>
        <div class="card-right-body">
@@ -43,7 +43,8 @@
        }
     },
     methods:{
-      pay(price){
+      pay(e,price){
+        e.preventDefault();
         let _this = this;
         this.$vux.confirm.show({
           title:`确认是否支付${price}元`,
