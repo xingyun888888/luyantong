@@ -40,7 +40,7 @@
            if (this.list.length / 6 === 10) {
              this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
            }
-         }, 2000);
+         }, 500);
        },
        changeFilter() {
          this.list = [];

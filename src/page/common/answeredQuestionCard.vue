@@ -29,7 +29,7 @@
             name:"王强",
             listened:6,
             address:"北京",
-            price:160
+            price:Number(160).toFixed(2)
           }
         }
       }
@@ -91,6 +91,7 @@
   .name{
     font-size:0.9rem;
     font-weight:500;
+    margin-right:0.8rem;
   }
   .address{
     color:$gray9;

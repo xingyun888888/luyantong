@@ -30,9 +30,14 @@ const waitAnswer = r =>require.ensure([],()=>r(require('../page/component/waitAn
 
 const answered=r => require.ensure([],()=>r(require('../page/component/answered')),'answered')
 
-const myQuestion=r => require.ensure([],()=>r(require('../page/mine/children/myQuestion')),'myQuestion')
+const myQuestion = r => require.ensure([],()=>r(require('../page/mine/children/myQuestion')),'myQuestion')
 
-const investPreference =r =>require.ensure([],()=>r(require("../page/mine/children/investPreference")),'investPreference')
+const investPreference =r => require.ensure([],()=>r(require("../page/mine/children/investPreference")),'investPreference')
+const personInfo = r => require.ensure([],()=>r(require("../page/mine/children/personInfo")),"personInfo")
+
+const toBeInvestor = r =>require.ensure([],()=>r(require("../page/mine/children/toBeInvestor")),"toBeInvestor")
+
+
 
 Vue.use(Router)
 
@@ -82,8 +87,12 @@ export default new Router({
           },
           //我的资料页面
           {
-             path:"/mine",
-             component:mine
+            path:"/mine",
+            component:mine
+          },
+          {
+            path:"/toBeInvestor",
+            component:toBeInvestor
           },
           {
             path:"/waitAnswerDetail",
@@ -110,6 +119,10 @@ export default new Router({
           {
             path:"/investPreference",
             component:investPreference
+          },
+          {
+            path:"/personInfo",
+            component:personInfo
           }
        ]
      }

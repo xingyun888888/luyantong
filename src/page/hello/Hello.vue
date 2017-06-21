@@ -65,7 +65,7 @@
 
   },
   components:{
-     WeuiDistpicker,InfiniteLoading,Cell,Group
+     InfiniteLoading,Cell,Group
   }
 }
 </script>

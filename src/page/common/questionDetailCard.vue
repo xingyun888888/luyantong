@@ -89,6 +89,7 @@
       .name{
         font-size:0.9rem;
         font-weight:500;
+        margin-right:0.8rem;
       }
       .address{
         color:$gray9;

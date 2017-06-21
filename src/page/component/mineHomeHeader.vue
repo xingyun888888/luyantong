@@ -18,7 +18,7 @@
         <div class="gain-money">
           <b>赚取金额</b><span class="money">￥333.00</span>
         </div>
-        <a href="" class="to-be-invest">成为投资人</a>
+        <a href="#toBeInvestor" class="to-be-invest">成为投资人</a>
       </div>
     </div>
 </template>

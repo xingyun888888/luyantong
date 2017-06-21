@@ -141,7 +141,7 @@
                  time:1500
                })
              }
-           }, 2000);
+           }, 500);
          },
          changeFilter() {
            this.list = [];
