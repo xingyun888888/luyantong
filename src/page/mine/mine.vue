@@ -120,7 +120,7 @@
      </group>
      <div class="zm-split-line"></div>
      <group>
-       <cell title="资金明细" is-link>
+       <cell title="资金明细" :link="{path:'financialDetail'}">
          <svg width="1rem"  slot="icon"  height="0.8rem" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
            <!-- Generator: sketchtool 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
            <title>E269A093-C4BE-499E-8B76-B17C8FB16D6B</title>
@@ -158,7 +158,7 @@
            </g>
          </svg>
        </cell>
-       <cell title="提现申请" is-link>
+       <cell title="提现申请" :link="{path:'withdrawDepositApply'}">
          <svg width="1rem" slot="icon"  height="0.8rem" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
            <!-- Generator: sketchtool 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
            <title>521CBA58-3810-44B1-961C-266298C1586C</title>

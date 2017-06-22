@@ -4,7 +4,7 @@
          {{new Date().toString()}}
        </div>
        <div class="zm-title">
-         他提出的问题:
+         Ta提出的问题:
        </div>
        <div class="content">
          <p>

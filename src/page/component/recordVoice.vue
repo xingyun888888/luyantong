@@ -4,7 +4,7 @@
       <span class="title">我的回答</span>
       <!--<span class="price">{{"$"+value.price}}</span>-->
     </div>
-    <button class="record" @touchstart="startRecord($event)" @touchend="stopRecord($event)">按住说话</button>
+    <button class="record" @touchstart="startRecord($event)" @touchend="stopRecord($event)">按住录音</button>
     <button class="record" @click="playRecord">播放录音</button>
   </div>
 </template>
@@ -18,7 +18,8 @@
                    price:"160"
                }
            }
-       }
+       },
+       recoding:true
      },
      data(){
          return{
@@ -30,14 +31,13 @@
        startRecord(e){
          e.preventDefault();
 //         alert("touchstart");
-         this.timer=setTimeout(()=>{
-           this.$vux.toast.show({text:"录音开始"});
-           this.$wechat.startRecord({
-             cancel:function(){
-               alert("用户拒绝授权录音");
-             }
-           });
-         },1000);
+         this.$vux.toast.show({text:"录音开始"});
+         this.$wechat.startRecord({
+           cancel:function(){
+             alert("用户拒绝授权录音");
+           }
+         });
+
          //监听录音自动停止
          this.$wechat.onVoiceRecordEnd({
            complete: function (res) {

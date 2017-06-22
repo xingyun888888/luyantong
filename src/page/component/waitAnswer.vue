@@ -3,7 +3,9 @@
     <div class="question-title-msg">
       <p>共需回答<span>19</span>个问题，其中<span>10</span>个是私密问题</p>
     </div>
-    <question-detail-card v-for="index in 8" :key="index"></question-detail-card>
+    <router-link v-for="index in 8" :key="index" to="/waitAnswerDetail" tag="li">
+      <question-detail-card ></question-detail-card>
+    </router-link>
   </div>
 </template>
 <script>

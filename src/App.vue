@@ -19,7 +19,7 @@ export default {
 //      this.gettoken().then((res)=>{
 //        console.info("res.data:"+res.data);
 //        this.$wechat.config({
-//          debug:true,
+//          //debug:true,
 //          appId  : "wxda4d3c7659b5fc61",
 //          timestamp : res.data.timestamp,
 //          nonceStr :res.data.nonceStr,

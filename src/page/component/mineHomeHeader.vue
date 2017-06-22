@@ -1,9 +1,11 @@
 <template>
     <div class="mine-header">
       <div class="photo-and-name">
-        <div class="photo">
-          <img :src="photo" alt="" />
-        </div>
+        <a href="#personInfo">
+          <div class="photo">
+            <img :src="photo" alt="" />
+          </div>
+        </a>
         <div class="name">
           <span>王强</span>
         </div>

@@ -3,43 +3,48 @@ import Router from 'vue-router'
 //import Hello from '@/components/Hello'
 
 //测试页面
-const App = r => require.ensure([], () => r(require('../App')), 'app')
-const hello = r => require.ensure([], () => r(require('../page/hello/Hello')), 'hello')
-const Swiper = r => require.ensure([], () => r(require('../page/hello/Swiper')), 'swiper')
-const Timeline = r => require.ensure([], () => r(require('../page/hello/Timeline')), 'timeline')
+import App from '../App';
+import hello from '../page/hello/Hello';
+import Swiper from '../page/hello/Swiper';
+import Timeline from'../page/hello/Timeline';
 
 //找投资人页面
-const invest = r => require.ensure([], () => r(require('../page/invest')), 'invest')
-const investorDetail=r => require.ensure([], () => r(require('../page/invest/children/investorDetail')), 'investorDetail')
-const  moreField=r => require.ensure([], () => r(require('../page/invest/children/moreField')), 'moreField')
+import invest from '../page/invest';
+import investorDetail from '../page/invest/children/investorDetail';
+import moreField from '../page/invest/children/moreField';
 
-const investorList=r => require.ensure([], () => r(require('../page/invest/children/investorList')), 'investorList')
+import investorList from '../page/invest/children/investorList';
 
-const questionDetail=r => require.ensure([], () => r(require('../page/invest/children/questionDetail')), 'questionDetail')
+import questionDetail from '../page/invest/children/questionDetail';
 
 /**
  * 我的主页
  */
-const mine=  r => require.ensure([], () => r(require('../page/mine/mine')), 'mine')
+import mine from '../page/mine/mine';
 
-const waitAnswerDetail = r => require.ensure([],()=>r(require('../page/mine/children/waitAnswerDetail')),'waitAnswerDetail')
+import waitAnswerDetail from '../page/mine/children/waitAnswerDetail';
 
-const myAnswer = r =>require.ensure([],()=>r(require('../page/mine/children/myAnswer')),'myAnswer')
+import myAnswer from '../page/mine/children/myAnswer';
 
-const waitAnswer = r =>require.ensure([],()=>r(require('../page/component/waitAnswer')),'waitAnswer')
+import waitAnswer from '../page/component/waitAnswer';
 
-const answered=r => require.ensure([],()=>r(require('../page/component/answered')),'answered')
+import  answered  from '../page/component/answered';
 
-const myQuestion = r => require.ensure([],()=>r(require('../page/mine/children/myQuestion')),'myQuestion')
+import myQuestion from '../page/mine/children/myQuestion';
 
-const myQuestionDetail = r => require.ensure([],()=>r(require('../page/mine/children/myQuestionDetail')),'myQuestionDetail')
+import myQuestionDetail from '../page/mine/children/myQuestionDetail';
 
-const investPreference =r => require.ensure([],()=>r(require("../page/mine/children/investPreference")),'investPreference')
-const personInfo = r => require.ensure([],()=>r(require("../page/mine/children/personInfo")),"personInfo")
+import  investPreference from "../page/mine/children/investPreference";
 
-const toBeInvestor = r =>require.ensure([],()=>r(require("../page/mine/children/toBeInvestor")),"toBeInvestor")
+import personInfo from "../page/mine/children/personInfo";
 
+import toBeInvestor from "../page/mine/children/toBeInvestor";
 
+import withdrawDepositApply from "../page/mine/children/withdrawDepositApply";
+
+import withdrawDepositRecord from "../page/mine/children/withdrawDepositRecord";
+
+import financialDetail from "../page/mine/children/financialDetail";
 
 Vue.use(Router)
 
@@ -129,6 +134,18 @@ export default new Router({
           {
             path:"/personInfo",
             component:personInfo
+          },
+          {
+            path:"/withdrawDepositApply",
+            component:withdrawDepositApply
+          },
+          {
+            path:"/withdrawDepositRecord",
+            component:withdrawDepositRecord
+          },
+          {
+            path:"/financialDetail",
+            component:financialDetail
           }
        ]
      }

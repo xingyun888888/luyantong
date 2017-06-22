@@ -15,7 +15,7 @@
   export default{
     mounted(){
       reSetTitleUtil.reSetTitle("我的回答");
-      this.$router.push("waitAnswer");
+      this.$router.replace("waitAnswer");
     },
     data(){
         return {
@@ -26,9 +26,9 @@
       onItemClick (index) {
         console.log('on item click:', index)
         if(index==0){
-          this.$router.push("waitAnswer");
+          this.$router.replace("waitAnswer");
         }else if(index==1){
-          this.$router.push("answered");
+          this.$router.replace("answered");
         }
       }
     },

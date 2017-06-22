@@ -76,6 +76,7 @@
                },
                onConfirm(){
                  _this.$vux.toast.show({text:"支付成功"});
+
                }
            })
         },
