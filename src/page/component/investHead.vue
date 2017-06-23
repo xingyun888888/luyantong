@@ -9,21 +9,21 @@
       <div class="zm-card-right">
         <div class="zm-card-header">
           <span class="name">{{value.name}}</span>
-          <span class="address">{{value.address}}</span>
-          <span class="answer-nummber">{{value.answered}}个回答</span>
-          <span class="listened-number">{{value.listened}}人关注</span>
+          <span class="address">{{value.city}}</span>
+          <span class="answer-nummber">{{value.totalQuestionsAnswers}}个回答</span>
+          <span class="listened-number">{{value.total_follow}}人关注</span>
         </div>
         <div class="zm-card-body">
           <span class="position">{{value.position}}</span>
-          <button :class="{'isAttentionSuccess':isAttentionSuccess}" @click="attention(value.name)">{{isAttentionSuccess?'已关注':'+关注'}}</button>
+          <button :class="{'isAttentionSuccess':value.isFollowing}" @click="attention(value.name)">{{value.isFollowing?'已关注':'+关注'}}</button>
         </div>
       </div>
     </div>
     <div class="invest-card-body">
-       <a class="zm-label" v-for="item in value.label">{{item}}</a>
+       <a class="zm-label" v-for="item in value.investment_field||['金融服务','企业服务','机械硬件']">{{item}}</a>
     </div>
     <div class="invest-card-foot">
-      <p>的方式发送到过节费上东国际佛国际法的两个疯掉了国际法的老规矩了解过路费等会就发过了会根据法律积分落户</p>
+      <p>{{value.self_introduction||"的方式发送到过节费上东国际佛国际法的两个疯掉了国际法的老规矩了解过路费等会就发过了会根据法律积分落户"}}</p>
     </div>
   </div>
 </template>
@@ -36,36 +36,23 @@
            type:Object,
            default:()=>{
                return{
-                   photo:"/static/images/bitmap.png",
-                   address:"北京",
-                   name:"王强",
-                   number:"12",
-                   listened:"2044354",
-                   answered:"30000",
-                   position:"创投孵化器/创投总监",
-                   attention:function(param){
-                       return new Promise((resolve,reject)=>{
-                         resolve("关注成功");
-                       })
-                   },
-                   label:["金融服务",'企业服务','机械硬件']
+
                }
            }
        }
     },
     data(){
        return{
-         isAttentionSuccess:false
        }
     },
     methods:{
       ...mapActions,
       attention(param){
-        if(this.isAttentionSuccess) return;
+        if(this.value.isFollowing) return;
         param = JSON.stringify(param);
         this.value.attention(param).then((res)=>{
           this.$vux.toast.show({text:"关注成功"})
-          this.isAttentionSuccess=true;
+          this.value.isFollowing=true;
         });
       }
     },
@@ -92,6 +79,7 @@
   		    	display:inline-block;
   		    	width:4rem;
   		    	height:4rem;
+            overflow:hidden;
   		    	border-radius:50%;
             img{
               width:100%;

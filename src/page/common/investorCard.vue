@@ -10,12 +10,12 @@
          <span class="zm-card-title">{{value.name}}</span><span>{{value.position}}</span>
        </div>
        <div class="zm-card-body">
-         <span v-for="item in value.fields">{{item}}</span>
+         <span v-for="item in value.investment_fields">{{item}}</span>
        </div>
     </div>
     <div class="zm-card-right">
        <div class="zm-card-info">{{value.answer}}个回答</div>
-       <div class="zm-card-button"><button :class="{'isAttentionSuccess':isAttentionSuccess}" @click="attention($event,value.name)">{{isAttentionSuccess?'已关注':'+关注'}}</button></div>
+       <div class="zm-card-button"><button :class="{'isAttentionSuccess':value.isFollow}" @click="attention($event,value.name)">{{value.isFollow?'已关注':'+关注'}}</button></div>
     </div>
   </div>
 </template>
@@ -32,11 +32,11 @@
        attention(e,param){
          e.preventDefault();
          console.log(2333);
-         if(this.isAttentionSuccess) return;
+         if(this.value.isFollow) return;
          param = JSON.stringify(param);
          this.value.attention(param).then((res)=>{
              this.$vux.toast.show({text:"关注成功.."})
-             this.isAttentionSuccess=true;
+             this.value.isFollow=true;
          });
        }
     },
@@ -45,16 +45,6 @@
             type:Object,
             default:()=>{
                 return{
-                  photo:"/static/images/photo.png",
-                  name:"姓名",
-                  position:"创投孵化器/创投总监",
-                  fields:["互联网","电子商务","电子商务"],
-                  attention:function(param){
-                    return new Promise((resolve,reject)=>{
-                      resolve(false);
-                    })
-                  },
-                  answer:"160",
                 }
             }
         }
@@ -62,7 +52,6 @@
     },
     data(){
       return {
-         isAttentionSuccess:false
       }
     }
   }

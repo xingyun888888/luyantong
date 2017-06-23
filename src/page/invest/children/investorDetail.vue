@@ -1,6 +1,6 @@
 <template>
   <div class="invest-detail-container">
-    <invest-head></invest-head>
+    <invest-head :value="investorInfo"></invest-head>
     <div class="zm-split-line"></div>
     <question-add></question-add>
     <div class="zm-split-line"></div>
@@ -16,14 +16,23 @@
     import  investHead  from  "../../component/investHead.vue"
     import questionAdd  from "../../component/questionAdd.vue"
     import RequestCard from '../../common/questionCard'
+    import {mapActions} from 'vuex'
     export default{
+        mounted(){
+            console.log(this.$route.query.url);
+            this.getInvestorDetail({url:this.$route.query.url}).then((res)=>{
+                 this.investorInfo=res.investorInfo;
+            });
+        },
         data(){
            return{
+              investorInfo:{},
               totalQuestion:64,
               privateQuestion:23
            }
         },
         methods:{
+          ...mapActions(['getInvestorDetail'])
         },
         components:{
            investHead,questionAdd,RequestCard

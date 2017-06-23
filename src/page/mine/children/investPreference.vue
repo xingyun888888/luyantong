@@ -22,7 +22,7 @@
         <i></i><b>计划一年内投资项目个数</b>
       </div>
       <group >
-        <radio :options="planInvestNumber" @on-change="change"></radio>
+        <radio :options="planInvestNumber" @on-change="change" v-model="planInvestNumberSelected" ></radio>
       </group>
 
     </div>
@@ -32,7 +32,7 @@
         <i></i><b>单个项目项目投资预期额度</b>
       </div>
       <group >
-        <radio :options="singleInvestLimit" @on-change="change"></radio>
+        <radio :options="singleInvestLimit" @on-change="change" v-model="singleInvestLimitSelected" ></radio>
       </group>
     </div>
     <div class="zm-split-line"></div>
@@ -53,7 +53,17 @@
 </template>
 <script>
   import {Checklist,Group,Radio,XTextarea,XButton,XAddress,ChinaAddressV3Data} from 'vux'
+  import {mapActions} from "vuex"
   export default{
+      mounted(){
+        this.getInvestPreference().then((res)=>{
+            console.log(res);
+            this.investPreferenceList=res.investment_stages;
+            this.investPreferenceSelected=res.investment_stages_checked;
+            this.planInvestNumber=res.plan_to_invest_amount;
+            this.planInvestNumberSelected=res.plan_to_invest_amount_checked;
+        });
+      },
       data(){
           return{
             addressData: ChinaAddressV3Data,
@@ -61,14 +71,17 @@
             residentCityTwo:[],
             isSave:false,
             labelPosition: '',
-            investPreferenceList: [ '种子轮/天使轮', 'Pre-A轮', 'A轮','B轮','C轮','D轮','D轮及以上'],
+            investPreferenceList: [],
             investPreferenceSelected:[],
             planInvestNumber:['1-5','6-10','11-20','21-50','51-100','101及以上'],
-            singleInvestLimit:['RMB 100-500万','RMB 500-1000万','RMB 1000-5000万','RMB 10000万以上']
+            planInvestNumberSelected:[],
+            singleInvestLimit:['RMB 100-500万','RMB 500-1000万','RMB 1000-5000万','RMB 10000万以上'],
+            singleInvestLimitSelected:[]
 
           }
       },
       methods:{
+        ...mapActions(['getInvestPreference']),
         logShow (str) {
           console.log('on-show')
         },

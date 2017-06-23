@@ -44,8 +44,8 @@
       </grid-item>
     </grid>
     <div class="list-title"><b></b><span>投资人列表</span></div>
-    <router-link v-for="(item,index) in list" :key="index" to="investorDetail" >
-      <investor-card  :value="value" ></investor-card>
+    <router-link v-for="(item,index) in investorList" :key="index" :to="{path:'investorDetail',query:{url:'/api/investors/'+item.id}}" >
+      <investor-card  :value="item" ></investor-card>
     </router-link>
     <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading" spinner="circles">
       <div slot="no-results" >
@@ -59,7 +59,7 @@
 </template>
 <script>
 
-   import {mapActions} from "vuex"
+   import {mapActions,mapGetters} from "vuex"
    import investorCard from '../common/investorCard.vue'
    import {Grid,GridItem,GroupTitle,Search,Icon} from "vux"
    import InfiniteLoading from 'vue-infinite-loading';
@@ -75,29 +75,28 @@
      return rs
    }
    export default {
+       created(){
+       },
        mounted(){
          reSetTitleUtil.reSetTitle("找投资");
        },
-
+       computed:{
+       },
+       watch:{
+       },
        data(){
          return{
-           value:{
-             photo:"/static/images/photo.png",
-             name:"姓名",
-             position:"创投孵化器/创投总监",
-             fields:["互联网","电子商务","电子商务"],
-             attention:this.attentionInvestor,
-             answer:"160",
-           },
            searchIsShow:false,
            fieldNames:["企业服务","金融服务","互联网","学习教育","生活消费","机械硬件","食品链","更多分类"],
            results: [],
-           list:[]
+           investorList:[],//投资人列表信息
+           pagination:{},//投资人列表分页信息
+           currentPage:1
          }
        },
        components:{investorCard,Grid,GridItem,GroupTitle,Search,Icon,InfiniteLoading},
        methods:{
-         ...mapActions(["attentionInvestor"]),
+         ...mapActions(["attentionInvestor","getInvestors"]),
          setFocus(){
              this.searchIsShow=true;
              this.$nextTick(()=>{
@@ -125,14 +124,10 @@
            this.searchIsShow=false;
          },
          onInfinite() {
-           setTimeout(() => {
-             const temp = [];
-             for (let i = this.list.length + 1; i <= this.list.length + 20; i++) {
-               temp.push(i);
-             }
-             this.list = this.list.concat(temp);
+           this.getInvestors({page:this.currentPage++}).then((res)=>{
+             this.investorList=this.investorList.concat(res.investorList);
              this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
-             if (this.list.length / 6 === 10) {
+             if (this.currentPage>=res.pagination.count) {
                this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
                this.$vux.toast.show({
                  text:"没有更多信息了",
@@ -141,7 +136,7 @@
                  time:1500
                })
              }
-           }, 500);
+           })
          },
          changeFilter() {
            this.list = [];

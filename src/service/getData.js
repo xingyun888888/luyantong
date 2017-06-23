@@ -5,6 +5,9 @@ import {getInfo} from './axios';
 
 var  serviceUrl = 'http://smile888.applinzi.com/getToken.php';
 
+
+var serverUrl="http://192.168.1.30/api/";
+
 /**
  * 获取token
  * @param params
@@ -12,13 +15,22 @@ var  serviceUrl = 'http://smile888.applinzi.com/getToken.php';
 var getToken=(params) =>getInfo(serviceUrl,params,'get');
 
 
+var getInvestors=(params) =>getInfo("/api/investors",params,'get');
+
+
+var getInvestorDetail = (params) =>getInfo(params.url,"",'get');
+
+
 var attentionInvestor=(params) =>getInfo(serviceUrl,params,'post');
 
 
 var getQuestion=(params) => getInfo(serviceUrl,params,'get');
 
-
-
+/**
+ *  获取投资偏好信息
+ * @param params
+ */
+var getInvestPreference=(params)=>getInfo("/api/investor/preferences",params,'get');
 
 
 
@@ -45,9 +57,13 @@ var getSmsCode = (params) => getInfo('http://10.160.10.50:8019/common/verificati
 export {
   login,              //登录
   getToken,           //获取用户token
+
+  getInvestors,       //获取投资人信息
+
   attentionInvestor,  //关注投资人
   getQuestion,        //获得投资人问题
-
+  getInvestPreference,//获取投资偏好信息
+  getInvestorDetail,//获取投资人详情
 
 
 

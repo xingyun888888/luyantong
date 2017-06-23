@@ -4,15 +4,14 @@
 
 
 export default{
-  Path:(state,getters,rootState) => {
-    return rootState.route.path
+  //投资人信息
+  Investors(state,getters,rootState){
+    return state.investors
   },
-  Query:(state,getters,rootState) => {
-    return rootState.route.query
-  },
-  Params:(state,getters,rootState) => {
-    return rootState.route.params
-  },
+
+
+
+
   Shop:(state,getters,rootState) => {
     return state.shop
   },

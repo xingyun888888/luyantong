@@ -95,13 +95,33 @@
           console.log("新增图片...");
           let _this= this;
           this.$wechat.chooseImage({
+            count:1,//默认为9
             success: (res) => {
-              _this.uploadImg.localId = res.localIds;
               _this.$vux.toast.show({text:'已选择 ' + res.localIds.length + ' 张图片'});
               res.localIds.forEach((item,index)=>{
+
+                //解决兼容ios问题
+                if(window.__wxjs_is_wkwebview){
+                  _this.$wechat.getLocalImgData({
+                    localId:item,
+                    success:(res)=>{
+                      _this.uploadImg.localId = res.localData;
+                      _this.images.push({url:res.localData});//base64数据,可以用img标签显示
+                      _this.showImgs.push({src:res.localData,w:800,h:400});
+                    }
+                  })
+                }else{
+                  _this.uploadImg.localId = res.localIds;
                   _this.images.push({url:item});
                   _this.showImgs.push({src:item,w:800,h:400});
+
+                }
+
+
               })
+
+
+
             }
           })
         },

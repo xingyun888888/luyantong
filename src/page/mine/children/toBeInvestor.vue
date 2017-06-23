@@ -133,18 +133,37 @@
         uploadFrontView(){
           let _this= this;
           this.$wechat.chooseImage({
+            count:1,
             success: (res) => {
-              _this.frontViewUrl = res.localIds;
+              if(window.__wxjs_is_wkwebview){
+                _this.$wechat.getLocalImgData({
+                  localId:res.localIds[0],
+                  success:(res)=>{
+                    _this.frontViewUrl = res.localData;
+                  }
+                })
+              }else{
+                _this.frontViewUrl = res.localIds[0];
+              }
               _this.$vux.toast.show({text:'已选择 ' + res.localIds.length + ' 张图片'});
-
             }
           })
         },
         uploadBackView(){
           let _this= this;
           this.$wechat.chooseImage({
+            count:1,
             success: (res) => {
-              _this.backViewUrl = res.localIds;
+              if(window.__wxjs_is_wkwebview){
+                _this.$wechat.getLocalImgData({
+                  localId:res.localIds[0],
+                  success:(res)=>{
+                    _this.backViewUrl = res.localData;
+                  }
+                })
+              }else{
+                _this.backViewUrl = res.localIds[0];
+              }
               _this.$vux.toast.show({text:'已选择 ' + res.localIds.length + ' 张图片'});
 
             }
@@ -214,13 +233,21 @@
               padding-left:0.8rem;
               .front-view,.back-view{
                  border:1px dotted #ccc;
-                 height:9rem;
+                 height:10rem;
                  margin-bottom:0.8rem;
                  margin-right:1rem;
+                 text-align:center;
+                 line-height:10rem;
                  img{
-                   width:100%;
-                   height:100%;
+                   max-width:100%;
+                   max-height:100%;
                  }
+              }
+              .front-view{
+                background:url("/static/images/front-view.png") no-repeat center center;
+              }
+              .back-view{
+                background:url("/static/images/back-view.png") no-repeat center center;
               }
             }
             .title{

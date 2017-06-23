@@ -12,6 +12,8 @@ import {sync} from 'vuex-router-sync'
 
 require("./config/rem.js");
 
+ require('vconsole');
+
 const FastClick = require('fastclick')
 
 FastClick.attach(document.body);

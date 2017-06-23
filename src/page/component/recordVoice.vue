@@ -40,9 +40,9 @@
 
          //监听录音自动停止
          this.$wechat.onVoiceRecordEnd({
-           complete: function (res) {
-             this.localId = res.localId;
+           complete: (res)=>{
              this.$vux.toast.show({text:'录音时间已超过一分钟'});
+             this.localId = res.localId;
            }
          });
        },
