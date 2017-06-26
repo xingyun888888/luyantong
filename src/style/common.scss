@@ -211,9 +211,17 @@ div.vux-tab
      padding:0.4rem 0.7rem;
     .weui-icon-search{
        font-size:1rem;
+       top:1rem;
        line-height:1.6rem;
-       top:50%;
        transform:translateY(-50%);
+    }
+    input.weui-search-bar__input{
+      top:1rem;
+      transform:translateY(-50%);
+    }
+    .weui-icon-clear{
+      top:1rem;
+      transform:translateY(-50%);
     }
     .weui-search-bar__cancel-btn{
       line-height:2rem;

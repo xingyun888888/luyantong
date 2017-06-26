@@ -54,8 +54,8 @@ const actions={
      return new Promise((resolve,reject)=>{
         api.getInvestorDetail(params).then((res)=>{
            let result=res.data.data;
-           console.log(result);
            let investorInfo={
+             id:result.id,
              name:result.realname,
              isFollowing:result.isFollowing,
              investment_fields:result.investment_fields,
@@ -74,35 +74,158 @@ const actions={
         });
      })
   },
-
-
-
-
   /**
-   *
+   * 向投资人提交问题
    * @param state
    * @param commit
    * @param params
    * @returns {Promise}
    */
-  attentionInvestor({state,commit},params){
+  saveQuestion({state,commit},params){
      return new Promise((resolve,reject)=>{
-        console.log(params);
-        resolve(api.attentionInvestor(params));
+         api.saveQuestion(params).then((res)=>{
+            resolve();
+         })
      })
   },
+
+
   /**
-   *
+   * 关注投资人
    * @param state
    * @param commit
    * @param params
    * @returns {Promise}
    */
-  getQuestion({state,commit},params){
+  followInvestor({state,commit},params){
+     return new Promise((resolve,reject)=>{
+        api.followInvestor(params).then((res)=>{
+          resolve({message:res.data.message});
+        });
+     })
+  },
+
+  /**
+   * 获得问题
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  getQuestion({state,commit},params={url:"/api/questions"}){
     return new Promise((resolve,reject)=>{
-      console.log(params);
-      resolve(api.getQuestion(params));
+      api.getQuestion(params).then((res)=>{
+        let questionList=[];
+        let pagination=null;
+        let result=res.data.data;
+        result.map((item,index)=>{
+          questionList.push({
+            id:item.id,
+            summary:item.summary,
+            detail:item.detail,
+            photo:item.user.data.wechat.data.headimgurl,
+            totalListens:item.totalListens
+          });
+        })
+        pagination=res;
+
+        resolve({questionList,pagination});
+      });
     })
+  },
+  /**
+   * 获得我的问题列表
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  getMyQuestion({state,commit},params){
+    return new Promise((resolve,reject)=>{
+       api.getMyQuestion(params).then((res)=> {
+         let myQuestionList = [];
+         let result = res.data.data;
+         result.map((item, index) => {
+            myQuestionList.push({
+              id:item.id,
+              name:item.investor.data.realname,
+              summary:item.summary,
+              detail:item.detail,
+              price:item.paid,
+              is_private:item.is_private,
+              totalListens:item.totalListens,
+              photo:item.user.data.wechat.data.headimgurl
+            })
+         })
+
+         resolve({myQuestionList})
+       })
+    })
+  },
+  /**
+   * 获得我的回答列表
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+ getMyAnswer({state,commit},params){
+   return new Promise((resolve,reject)=>{
+      api.getMyAnswer(params).then((res)=>{
+         let myAnswerList=[];
+         let result=res.data.data;
+         result.map((item,index)=>{
+           myAnswerList.push({
+             name:item.investor.data.realname,
+             id:item.id,
+             summary:item.summary,
+             is_private:item.is_private,
+             price:null||0,
+             detail:item.detail,
+             totalListens:item.totalListens,
+             photo:item.user.data.wechat.data.headimgurl
+           })
+         })
+         resolve({myAnswerList});
+
+      })
+   })
+ },
+
+ getListenedQuestion({state,commit},params){
+   return new Promise((resolve,reject)=>{
+      api.getListenedQuestion(params).then((res)=>{
+
+      })
+   })
+ },
+
+
+
+  /**
+   * 获得问题详情
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  getQuestionDetail({state,commit},params){
+    return new Promise((resolve,reject)=>{
+      api.getQuestionDetail(params).then((res)=>{
+         let result = res.data.data;
+         console.log(result);
+         resolve({
+           answer:result.answer,
+           bp_images:result.bp_images,
+           detail:result.detail,
+           id:result.id,
+           totalListens:result.totalListens,
+           summary:result.summary,
+           photo:result.user.data.wechat.data.headimgurl
+         });
+      })
+    })
+
   },
 
   /**
@@ -142,17 +265,76 @@ const actions={
          })
          resolve({
            amount_per_project,
-           investment_stages,
-           plan_to_invest_amount,
            amount_per_project_checked,
+           investment_stages,
            investment_stages_checked,
+           plan_to_invest_amount,
            plan_to_invest_amount_checked
          });
 
 
        });
     })
+  },
+
+  /**
+   *  获得投资领域列表
+   * @param state
+   * @param commit
+   * @param params
+   */
+  getCategories({state,commit},params){
+     return new Promise((resolve,reject)=>{
+        api.getCategories(params).then((res)=>{
+            console.log(res);
+            let result = res.data.data;
+            let investCategories=[];
+            result.map((item,index)=>{
+              investCategories.push({
+                title:item.title,
+                id:item.id,
+                icon:item.icon,
+                url:item.url
+              })
+            })
+
+          resolve({investCategories});
+
+        })
+     })
+
+  },
+  /**
+   * 获得投资人列表信息
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  getFieldInvestorList({state,commit},params={url:""}){
+    return new Promise((resolve,reject)=>{
+      api.getFieldInvestorList(params).then((res)=>{
+        let result = res.data.data.investors.data;
+        console.log(result);
+        let investorList=[];
+        let investorsTotal=res.data.data.investorsTotal;
+        result.map((item,index)=>{
+          investorList.push({
+            id:item.id,
+            realname:item.realname,
+            investment_fields:item.investment_fields,
+            photo:item.user.data.wechat.data.headimgurl,
+            isFollowing:item.isFollowing,
+            answer:item.totalQuestionsAnswers
+
+          });
+        })
+         resolve({investorList,investorsTotal});
+      })
+    })
   }
 
+
 }
+
 export default actions;

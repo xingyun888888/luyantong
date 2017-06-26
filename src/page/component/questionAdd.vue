@@ -1,8 +1,8 @@
 <template>
    <div class="quest-container">
      <h4 class="zm-title">我要提问 :</h4>
-     <textarea name="" cols="30" rows="10" class="description" placeholder="请输入文本   （一句话概括，将显示在主页展示中，以便投资人精准阅读，若未填写，将筛取问题描述的前20字） "></textarea>
-     <textarea name="" cols="30" rows="10" class="detail" placeholder="向王强递交BP，等待反馈。请详细说明你的项目，建议对可展示的对外运营数据多加描述，在下方依次上传BP图片，展示顺序以上传顺序为准72小时未得到反馈自动退款。"></textarea>
+     <textarea name="" cols="30" rows="10" class="description" placeholder="请输入文本   （一句话概括，将显示在主页展示中，以便投资人精准阅读，若未填写，将筛取问题描述的前20字） " v-model="summary"></textarea>
+     <textarea name="" cols="30" rows="10" class="detail" v-model="detail" placeholder="向王强递交BP，等待反馈。请详细说明你的项目，建议对可展示的对外运营数据多加描述，在下方依次上传BP图片，展示顺序以上传顺序为准72小时未得到反馈自动退款。"></textarea>
      <uploader
        :max="varmax"
        :images="images"
@@ -19,7 +19,7 @@
      ></uploader>
      <!--选择领域-->
      <div class="isPublic">
-       <p><input type="checkbox" class="isPrivate" /><span>私密提问加50元,您的问题仅恁与投资人可见</span></p>
+       <p><input type="checkbox" class="isPrivate" v-model="is_private" /><span>私密提问加50元,您的问题仅恁与投资人可见</span></p>
        <p class="suggest">建议您公开提问，让更多的人看到您的需求</p>
      </div>
      <div>
@@ -40,11 +40,17 @@
       },
       data(){
         return{
+          is_private:"",
+          summary:"",
+          detail:"",
           price:"",
-          uploadImg:{
-            localId: [],
-            serverId: []
-          },
+          "bp_images[]":[],
+          investor_id:"",
+          category_id:"",
+//          uploadImg:{
+//            localId: [],
+//            serverId: []
+//          },
           images:[],//图片地址存储的数组
           showImgs:[],//预览图片的数组
           uploadUrl:"http://192.168.1.57/upload.php",//上传到后端服务器的地址
@@ -75,7 +81,16 @@
 
                },
                onConfirm(){
-                 _this.$vux.toast.show({text:"支付成功"});
+
+                  let params={
+                      summary:_this.summary,
+                      detail:_this.detail,
+                      is_private:_this.is_private,
+                      category_id:_this.category_id,
+                      investor_id: _this.investor_id,
+                      "bp_images[]":_this["bp_images[]"]
+                  }
+                 //_this.$vux.toast.show({text:"支付成功"});
 
                }
            })
@@ -97,36 +112,45 @@
           this.$wechat.chooseImage({
             count:1,//默认为9
             success: (res) => {
+              //上传图片
+              _this.$wechat.uploadImage({
+                  localId: res.localIds[0],
+                  isShowProgressTips: 1,
+                  success: function (result) {
+                    console.log(result.serverId);
+                    _this["bp_images[]"].push(result.serverId);
+                  },
+                  fail: function (result) {
+                    alert(JSON.stringify(result));
+                  }
+              });
+
               _this.$vux.toast.show({text:'已选择 ' + res.localIds.length + ' 张图片'});
               res.localIds.forEach((item,index)=>{
-
+                console.log(item);
                 //解决兼容ios问题
                 if(window.__wxjs_is_wkwebview){
                   _this.$wechat.getLocalImgData({
                     localId:item,
                     success:(res)=>{
-                      _this.uploadImg.localId = res.localData;
+                      //_this.uploadImg.localId = res.localData;
                       _this.images.push({url:res.localData});//base64数据,可以用img标签显示
                       _this.showImgs.push({src:res.localData,w:800,h:400});
                     }
                   })
                 }else{
-                  _this.uploadImg.localId = res.localIds;
+                 // _this.uploadImg.localId = res.localIds;
                   _this.images.push({url:item});
                   _this.showImgs.push({src:item,w:800,h:400});
 
                 }
-
-
               })
-
-
-
             }
           })
         },
         removeImageMethod(){
            console.log("删除图片...");
+           this["bp_images[]"].pop();
            this.images.pop();
            this.showImgs.pop();
         }

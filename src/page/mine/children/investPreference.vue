@@ -62,6 +62,8 @@
             this.investPreferenceSelected=res.investment_stages_checked;
             this.planInvestNumber=res.plan_to_invest_amount;
             this.planInvestNumberSelected=res.plan_to_invest_amount_checked;
+            this.singleInvestLimit=res.amount_per_project;
+            this.singleInvestLimitSelected=res.amount_per_project_checked;
         });
       },
       data(){
@@ -73,10 +75,10 @@
             labelPosition: '',
             investPreferenceList: [],
             investPreferenceSelected:[],
-            planInvestNumber:['1-5','6-10','11-20','21-50','51-100','101及以上'],
-            planInvestNumberSelected:[],
-            singleInvestLimit:['RMB 100-500万','RMB 500-1000万','RMB 1000-5000万','RMB 10000万以上'],
-            singleInvestLimitSelected:[]
+            planInvestNumber:[],
+            planInvestNumberSelected:"",
+            singleInvestLimit:[],
+            singleInvestLimitSelected:""
 
           }
       },
@@ -86,7 +88,7 @@
           console.log('on-show')
         },
         save(){
-
+            //提交按钮 更新投资偏好信息
         },
         change (val) {
           console.log('change', val)

@@ -3,10 +3,12 @@
       <!--<div class="field-name">{{$route.query.title}}</div>-->
        <div class="invest-field-title">
           <h3>企业服务领域</h3>
-          <span>79位投资人</span>
+          <span>{{investorsTotal}}位投资人</span>
        </div>
        <div class="zm-split-line"></div>
-       <investor-card v-for="i in list" :key="i"></investor-card>
+       <router-link v-for="(item,index) in investorList" :key="index" :to="{path:'investorDetail',query:{id:item.id}}" tab="li">
+         <investor-card :value="item" ></investor-card>
+       </router-link>
        <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading" spinner="circles">
          <div slot="no-results" >
            <p style="font-size:1rem;padding:1rem;text-align:center;" @click="changeFilter">加载失败,请点我重试</p>
@@ -20,27 +22,26 @@
 <script>
   import  investorCard   from  "../../common/investorCard.vue"
   import InfiniteLoading from 'vue-infinite-loading';
+  import {mapActions} from "vuex";
   export default{
      mounted(){
      },
      data(){
        return{
-          list:[]
+          investorList:[],
+          investorsTotal:""
        }
      },
      methods:{
+       ...mapActions(["getFieldInvestorList"]),
        onInfinite() {
-         setTimeout(() => {
-           const temp = [];
-           for (let i = this.list.length + 1; i <= this.list.length + 20; i++) {
-             temp.push(i);
-           }
-           this.list = this.list.concat(temp);
-           this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
-           if (this.list.length / 6 === 10) {
-             this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
-           }
-         }, 500);
+           let _this=this;
+           this.getFieldInvestorList({url:"/api/categories/"+this.$route.query.id}).then((res)=>{
+              _this.investorList=_this.investorList.concat(res.investorList);
+              _this.investorsTotal=res.investorsTotal;
+           })
+         this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+         this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
        },
        changeFilter() {
          this.list = [];

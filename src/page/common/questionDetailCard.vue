@@ -7,7 +7,7 @@
     </div>
     <div class="card-right">
       <div class="card-right-title">
-        <span class="name">{{value.name}}</span>
+        <span class="name">{{value.summary}}</span>
         <span class="address">{{value.address}}</span>
         <span class="price">{{"￥"+value.price}}</span>
       </div>

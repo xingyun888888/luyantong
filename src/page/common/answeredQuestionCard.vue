@@ -10,7 +10,7 @@
         <span class="name">{{value.name}}</span>
         <span class="address">{{value.address}}</span>
         <span class="price">{{"￥"+value.price}}</span>
-        <span class="listened">{{value.listened}}人偷听</span>
+        <span class="listened">{{value.totalListens}}人偷听</span>
       </div>
       <div class="card-right-body">
         <p>如果你无法简洁的表达你的想法，那只能说明你还不够了解它</p>

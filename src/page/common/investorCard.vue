@@ -7,7 +7,7 @@
     </div>
     <div class="zm-card-middle">
        <div class="zm-card-header">
-         <span class="zm-card-title">{{value.name}}</span><span>{{value.position}}</span>
+         <span class="zm-card-title">{{value.realname}}</span><span>{{value.position}}</span>
        </div>
        <div class="zm-card-body">
          <span v-for="item in value.investment_fields">{{item}}</span>
@@ -15,28 +15,43 @@
     </div>
     <div class="zm-card-right">
        <div class="zm-card-info">{{value.answer}}个回答</div>
-       <div class="zm-card-button"><button :class="{'isAttentionSuccess':value.isFollow}" @click="attention($event,value.name)">{{value.isFollow?'已关注':'+关注'}}</button></div>
+       <div class="zm-card-button"><button :class="{'isAttentionSuccess':value.isFollowing}" @click="attention($event,value.id)">{{value.isFollowing?'已关注':'+关注'}}</button></div>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapActions} from 'vuex'
+
   export default {
     mounted(){
+    },
+    watch:{
+    },
+    data(){
+      return {
 
+      }
     },
     components: {
 
     },
     methods:{
-       attention(e,param){
+      ...mapActions(["followInvestor"]),
+       attention(e,id){
          e.preventDefault();
-         console.log(2333);
-         if(this.value.isFollow) return;
-         param = JSON.stringify(param);
-         this.value.attention(param).then((res)=>{
-             this.$vux.toast.show({text:"关注成功.."})
-             this.value.isFollow=true;
+         this.followInvestor({url:"/api/investors/"+id+"/follow"}).then((res)=>{
+           if(res.message=="取消关注成功"){
+              this.value.isFollowing=false;
+              this.$vux.toast.show({
+                  text:"取消关注成功"
+              })
+           }else if(res.message=="关注成功"){
+               this.value.isFollowing=true;
+               this.$vux.toast.show({
+                 text:"关注成功"
+               })
+           }
          });
        }
     },
@@ -49,10 +64,6 @@
             }
         }
 
-    },
-    data(){
-      return {
-      }
     }
   }
 </script>

@@ -61,9 +61,9 @@ var getInfo = (url='',data={},type='post') =>{
       }
       return {
         success: resp.data.success,        //是否响应成功
-        data: resp.data.data,   //前端展示data存储在这里（防后端把数据放到data外面导致报错）
+        data: resp.data || resp,   //前端展示data存储在这里（防后端把数据放到data外面导致报错）
         error: {
-          errorMsg: resp.data.message || '',     //报错信息
+          //errorMsg: resp.data.message || '',     //报错信息
           errorCode: resp.data.code,       //报错code
           error:resp.data.error
         },

@@ -11,6 +11,7 @@
 <script>
 import {mapActions} from "vuex"
 import FootGuide from "./components/footer/footGuide.vue"
+
 export default {
     components:{
       FootGuide

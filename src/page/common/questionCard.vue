@@ -7,13 +7,13 @@
      </div>
      <div class="card-right">
         <div class="card-right-title">
-          <span class="name">{{value.name}}</span>
+          <span class="name">{{value.summary}}</span>
           <span class="address">{{value.address}}</span>
           <button class="will-pay-listen" @click="pay($event,value.listenPrice)">{{value.listenPrice}}元偷听</button>
-          <span class="listened">{{value.listened}}人偷听</span>
+          <span class="listened">{{value.totalListens}}人偷听</span>
         </div>
        <div class="card-right-body">
-          <p>如果你无法简洁的表达你的想法，那只能说明你还不够了解它</p>
+          <p>{{value.detail}}</p>
        </div>
      </div>
    </div>
@@ -25,14 +25,7 @@
           type:Object,
           default:()=>{
               return{
-                  photo:"/static/images/bitmap.png",
-                  name:"王强",
-                  address:"北京",
-                  listened:"12000",
-                  listenPrice:"100",
-                  pay:(price)=>{
-                      alert("确认是否支付"+price+"元");
-                  }
+
               }
           }
       }

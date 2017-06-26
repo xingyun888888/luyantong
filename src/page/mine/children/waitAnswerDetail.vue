@@ -11,15 +11,16 @@
   import recordVoice from '../../component/recordVoice.vue';
   import questionDetailCard from '../../common/questionDetailCard.vue'
   import questionShow from '../../component/questionShow.vue'
-
+  import {mapActions} from 'vuex'
   export default{
+      mounted(){
+
+      },
       data(){
         return{
-
         }
       },
       methods:{
-
       },
       components:{
         recordVoice,questionDetailCard,questionShow

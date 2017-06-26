@@ -15,7 +15,7 @@
         </div>
         <div class="zm-card-body">
           <span class="position">{{value.position}}</span>
-          <button :class="{'isAttentionSuccess':value.isFollowing}" @click="attention(value.name)">{{value.isFollowing?'已关注':'+关注'}}</button>
+          <button :class="{'isAttentionSuccess':value.isFollowing}" @click="attention(value.id)" >{{value.isFollowing?'已关注':'+关注'}}</button>
         </div>
       </div>
     </div>
@@ -46,14 +46,21 @@
        }
     },
     methods:{
-      ...mapActions,
-      attention(param){
-        if(this.value.isFollowing) return;
-        param = JSON.stringify(param);
-        this.value.attention(param).then((res)=>{
-          this.$vux.toast.show({text:"关注成功"})
+      ...mapActions(["followInvestor"]),
+      attention(id){
+        this.followInvestor({url:"/api/investors/"+id+"/follow"}).then((res)=>{
+          if(res.message=="取消关注成功"){
+          this.value.isFollowing=false;
+          this.$vux.toast.show({
+            text:"取消关注成功"
+          })
+        }else if(res.message=="关注成功"){
           this.value.isFollowing=true;
-        });
+          this.$vux.toast.show({
+            text:"关注成功"
+          })
+        }
+      });
       }
     },
     components:{
