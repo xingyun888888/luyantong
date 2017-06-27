@@ -24,16 +24,16 @@
     import  investHead  from  "../../component/investHead.vue"
     import questionAdd  from "../../component/questionAdd.vue"
     import RequestCard from '../../common/questionCard'
-    import InfiniteLoading from 'vue-infinite-loading';
+    import InfiniteLoading from 'vue-infinite-loading'
+    import reSetTitleUtil from '../../common/RestTitle'
     import {mapActions} from 'vuex'
     export default{
         mounted(){
+
+            reSetTitleUtil.reSetTitle("投资人详情");
             this.getInvestorDetail({url:"/api/investors/"+this.$route.query.id}).then((res)=>{
                  this.investorInfo=res.investorInfo;
             });
-
-
-
         },
         data(){
            return{

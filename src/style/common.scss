@@ -371,5 +371,17 @@ div.vux-tab
       }
     }
   }
+
+  input[type=checkbox]{
+    background-color:#fff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+  input[type=checkbox]:checked{
+    background:#539ffd;
+    text-shadow:none;
+    border:1px solid transparent;
+  }
 }
 

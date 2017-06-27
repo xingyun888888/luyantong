@@ -17,7 +17,13 @@ const actions={
         resolve(api.getToken({url}));
       })
   },
-
+  /**
+   * 获得所有投资人
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
   getInvestors({ state,commit },params={page:1}){
     return new Promise((resolve,reject)=>{
       let result=api.getInvestors(params).then((res)=>{
@@ -191,11 +197,31 @@ const actions={
       })
    })
  },
-
+  /**
+   * 获得听过的问题
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
  getListenedQuestion({state,commit},params){
    return new Promise((resolve,reject)=>{
       api.getListenedQuestion(params).then((res)=>{
-
+          let listenedQuestionList=[];
+          let result=res.data.data;
+          result.map((item,index)=>{
+            listenedQuestionList.push({
+              name:item.investor.data.realname,
+              id:item.id,
+              summary:item.summary,
+              is_private:item.is_private,
+              price:null||0,
+              detail:item.detail,
+              totalListens:item.totalListens,
+              photo:item.user.data.wechat.data.headimgurl
+            })
+          })
+          resolve({listenedQuestionList})
       })
    })
  },

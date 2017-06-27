@@ -7,7 +7,7 @@
     </div>
     <div class="zm-card-middle">
        <div class="zm-card-header">
-         <span class="zm-card-title">{{value.realname}}</span><span>{{value.position}}</span>
+         <span class="zm-card-title">{{value.name}}</span><span>{{value.position}}</span>
        </div>
        <div class="zm-card-body">
          <span v-for="item in value.investment_fields">{{item}}</span>

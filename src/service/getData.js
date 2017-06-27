@@ -39,7 +39,10 @@ var followInvestor=(params) =>getInfo(params.url,"",'post');
 var getQuestion=(params) => getInfo(params.url,"",'get');
 
 
-
+/**
+ * 获得问题详情
+ * @param params
+ */
 var getQuestionDetail=(params)=>getInfo(params.url,"","get");
 
 /**

@@ -54,8 +54,10 @@
 <script>
   import {Checklist,Group,Radio,XTextarea,XButton,XAddress,ChinaAddressV3Data} from 'vux'
   import {mapActions} from "vuex"
+  import reSetTitleUtil from '../../common/RestTitle'
   export default{
       mounted(){
+        reSetTitleUtil.reSetTitle("投资偏好");
         this.getInvestPreference().then((res)=>{
             console.log(res);
             this.investPreferenceList=res.investment_stages;

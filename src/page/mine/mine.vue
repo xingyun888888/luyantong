@@ -91,7 +91,7 @@
            </g>
          </svg>
        </cell>
-       <cell title="听过的问题" is-link>
+       <cell title="听过的问题" :link="{path:'listenedQuestion'}">
          <svg width="1rem" slot="icon"  height="0.7rem" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
            <!-- Generator: sketchtool 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
            <title>B1408000-226F-4737-94FF-0561562EA1E9</title>

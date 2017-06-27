@@ -1,7 +1,9 @@
 <template>
   <div>
-    <!--<transition name="router-fade" mode="out-in">-->
-    <transition :name="'vux-pop-'+(direction=='forward' ? 'in' : 'out')">
+    <!--<transition :name="'vux-pop-'+(direction=='forward' ? 'in' : 'out')">-->
+     <!---->
+    <!--</transition> -->
+    <transition name="fadeOutLeftBig">
       <router-view class="router-view"></router-view>
     </transition>
     <foot-guide></foot-guide>
@@ -44,12 +46,21 @@ export default {
 
 <style lang="scss">
   @import "./style/common.scss";
-  /*.router-fade-enter-active,.router-fade-leave-action{*/
-    /*transition:opacity 0.3s;*/
-  /*}*/
-  /*.router-fade-enter,.router-fade-leave-active{*/
-    /*opacity:0;*/
-  /*}*/
+
+  .fadeOutLeftBig-enter-active,.fadeOutLeftBig-leave-action{
+    transition:opacity 1s;
+  }
+
+  .fadeOutLeftBig-enter,.fadeOutLeftBig-leave-active{
+    opacity:0;
+  }
+
+  .router-fade-enter-active,.router-fade-leave-action{
+    transition:opacity 0.5s;
+  }
+  .router-fade-enter,.router-fade-leave-active{
+    opacity:0;
+  }
   .router-view {
     width: 100%;
     /*top: 46px;*/

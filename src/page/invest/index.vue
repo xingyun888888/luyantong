@@ -158,9 +158,9 @@
          onInfinite() {
            this.getInvestors({page:this.currentPage++}).then((res)=>{
              this.investorList=this.investorList.concat(res.investorList);
-             this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
+             this.$refs.infiniteLoading&&this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
              if (this.currentPage>=res.pagination.count) {
-               this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
+             this.$refs.infiniteLoading&&this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
                this.$vux.toast.show({
                  text:"没有更多信息了",
                  type:'text',

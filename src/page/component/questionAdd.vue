@@ -19,11 +19,11 @@
      ></uploader>
      <!--选择领域-->
      <div class="isPublic">
-       <p><input type="checkbox" class="isPrivate" v-model="is_private" /><span>私密提问加50元,您的问题仅恁与投资人可见</span></p>
+       <p><input type="checkbox" id="isPrivate" class="isPrivate" v-model="is_private" /><label for="isPrivate">私密提问加50元,您的问题仅恁与投资人可见</label></p>
        <p class="suggest">建议您公开提问，让更多的人看到您的需求</p>
      </div>
      <div>
-       <x-button type="primary" @click.native="pay">需支付{{price}} 元，确认提交</x-button>
+       <x-button type="primary" @click.native="pay">需支付&nbsp;{{price}}&nbsp;元，确认提交</x-button>
      </div>
      <div v-transfer-dom >
        <previewer :list="showImgs" ref="previewer" :options="options"></previewer>
@@ -38,12 +38,21 @@
       directives: {
         TransferDom
       },
+      watch:{
+        is_private(curVal,oldVal){
+            if(curVal){
+                this.price+=10;
+            }else{
+                this.price-=10;
+            }
+        }
+      },
       data(){
         return{
           is_private:"",
           summary:"",
           detail:"",
-          price:"",
+          price:50,
           "bp_images[]":[],
           investor_id:"",
           category_id:"",

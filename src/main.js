@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
-import App from './App'
+//import App from './App'
 
 import router from './router/router.js'
 
@@ -12,7 +12,7 @@ import {sync} from 'vuex-router-sync'
 
 require("./config/rem.js");
 
- require('vconsole');
+require('vconsole');
 
 const FastClick = require('fastclick')
 
@@ -27,26 +27,12 @@ Vue.use(WechatPlugin);
 Vue.use(ToastPlugin);
 Vue.use(ConfirmPlugin);
 
-
-//
-// Vue.config({
-//   debug:true,
-//   appId	:	"wxda4d3c7659b5fc61",
-//   timestamp	:	new Date().getTime(),
-//   nonceStr	:	"",
-//   signature	:"",
-//   jsApiList:[
-//     "getLocation","getLocation","previewImage"
-//   ]
-// })
-
-
 Vue.config.productionTip = false
 
 
 
 //路由和store同步
-//sync(store, router)
+sync(store, router)
 
 
 
@@ -86,14 +72,11 @@ router.beforeEach(function (to, from, next) {
   }
 })
 */
-// router.afterEach(function (transition) {
-//   setTimeout(() => {
-//     window.scrollTo(0, 0)
-//   }, 0)
-// })
-
-
-
+router.afterEach(function (transition) {
+  setTimeout(() => {
+    window.scrollTo(0, 0)
+  }, 0)
+})
 
 
 /* eslint-disable no-new */

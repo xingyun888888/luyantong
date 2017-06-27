@@ -2,7 +2,7 @@
   <div class="tobe-investor-container">
      <div class="head-info">
         <p>
-          <i>&nbsp;</i><span>填写以下信息时请仔细与证件内容核对，提交后2个工作日内反馈审核结果，若未收到结果请致电客服反馈</span>
+          <span>填写以下信息时请仔细与证件内容核对，提交后2个工作日内反馈审核结果，若未收到结果请致电客服反馈</span>
         </p>
      </div>
      <div class="person-info-form">
@@ -201,12 +201,18 @@
         color:#666;
         padding:0.8rem;
         p{
-           i{
-              padding-left:1.2rem;
+           text-align:center;
+           span{
+             font-size:0.8rem;
 
-              background:url("/static/images/warning.png") no-repeat center center;
-              background-size:60%;
-            }
+           }
+
+           /*i{*/
+              /*padding-left:1.2rem;*/
+
+              /*background:url("/static/images/warning.png") no-repeat center center;*/
+              /*background-size:60%;*/
+            /*}*/
         }
 
      }
@@ -233,11 +239,11 @@
               padding-left:0.8rem;
               .front-view,.back-view{
                  border:1px dotted #ccc;
-                 height:10rem;
+                 height:12rem;
                  margin-bottom:0.8rem;
                  margin-right:1rem;
                  text-align:center;
-                 line-height:10rem;
+                 line-height:12rem;
                  img{
                    max-width:100%;
                    max-height:100%;

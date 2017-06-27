@@ -196,12 +196,12 @@
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('invest') !== -1? '#invest-active' : '#invest'"></use>
             </svg>
         </section>
-        <section @click = "gotoAddress({path: 'hello'})" class="guide_item">
+        <section @click = "gotoAddress({path: 'project'})" class="guide_item">
         	<svg class="icon_style">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('hello') !== -1? '#project-active' : '#project'"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('project') !== -1? '#project-active' : '#project'"></use>
             </svg>
         </section>
-        <section @click = "gotoAddress('/hello')" class="guide_item">
+        <section @click = "gotoAddress('/active')" class="guide_item">
         	<svg class="icon_style">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('active') !== -1? '#active-active' : '#active'"></use>
             </svg>
