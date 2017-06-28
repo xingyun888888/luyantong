@@ -74,19 +74,19 @@
          }
           .interest{
             background:url('/static/images/icon/interest.png') no-repeat center left;
-            background-size:4%;
+            background-size:3.8%;
           }
           .address{
             background:url('/static/images/icon/position.png') no-repeat center left;
-            background-size:4%;
+            background-size:3.8%;
           }
           .stage{
             background:url('/static/images/icon/stage.png') no-repeat center left;
-            background-size:4%;
+            background-size:3.8%;
           }
           .time{
             background:url('/static/images/icon/time.png') no-repeat center left;
-            background-size:4%;
+            background-size:3.8%;
           }
        }
      }

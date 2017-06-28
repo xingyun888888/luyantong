@@ -4,9 +4,7 @@ import Router from 'vue-router'
 
 //测试页面
 const App = r => require.ensure([], () => r(require('../App')), 'app')
-const hello = r => require.ensure([], () => r(require('../page/hello/Hello')), 'hello')
-const Swiper = r => require.ensure([], () => r(require('../page/hello/Swiper')), 'swiper')
-const Timeline = r => require.ensure([], () => r(require('../page/hello/Timeline')), 'timeline')
+const search = r => require.ensure([], () => r(require('../page/common/search')), 'search')
 
 //找投资人页面
 const invest = r => require.ensure([], () => r(require('../page/invest')), 'invest')
@@ -54,18 +52,10 @@ export default new Router({
             path:"",
             redirect:"/invest"
           },
-          {
-            path: '/swiper',
-            component: Swiper
-          },
-          {
-            path: '/timeline',
-            component: Timeline
-          },
         //找投资的页面
           {
-            path:"/hello",
-            component:hello
+            path:"/search",
+            component:search
           },
           {
             path:"/invest",

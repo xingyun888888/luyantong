@@ -8,7 +8,7 @@
         <span class="interest-number">感兴趣人数:567</span>
       </div>
       <div class="project-label">
-        <i></i><span>在线教育</span>
+        <i></i><span v-for="item in label">{{item}}</span>
       </div>
    </div>
 </template>
@@ -19,7 +19,7 @@
       },
       data(){
         return{
-
+          label:["在线教育","大数据","项目类别"]
         }
       },
       methods:{
@@ -64,11 +64,19 @@
            float:right;
            color:$gray9;
            font-weight:500;
+           padding-left:1rem;
+           background:url('/static/images/icon/interest.png') no-repeat center left;
+           background-size:10%;
          }
      }
      .project-label{
        height:1.5rem;
        line-height:1.5rem;
+       i{
+         padding-left:0.9rem;
+         background:url('/static/images/icon/label.png') no-repeat center left;
+         background-size:70%;
+       }
        &:before{
          display:table;
          content:"";
@@ -77,6 +85,7 @@
        span{
          color:$gray9;
          font-weight:500;
+         margin-right:0.5rem;
        }
      }
    }

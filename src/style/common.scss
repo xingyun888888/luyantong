@@ -352,7 +352,7 @@ div.vux-tab
       }
     }
    /**
-     选择框
+     选择框select下拉菜单
     */
   .tobe-investor-container{
     .vux-selector.weui-cell.weui-cell_select{
@@ -372,6 +372,9 @@ div.vux-tab
     }
   }
 
+  /**
+    iso 解决checkbox兼容
+   */
   input[type=checkbox]{
     background-color:#fff;
     border: 1px solid #ccc;
@@ -383,5 +386,19 @@ div.vux-tab
     text-shadow:none;
     border:1px solid transparent;
   }
+
+
+
+  /*有关视频video的样式*/
+  .video-player{
+    .video-js{
+      height:13rem !important;
+      .vjs-big-play-button{
+        height:1.5em !important;
+        line-height:1.5em !important;
+      }
+    }
+  }
+
 }
 
