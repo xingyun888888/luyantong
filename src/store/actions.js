@@ -3,7 +3,6 @@
  */
 import  * as api  from '../service/getData';
 
-
 const actions={
   /**
    * 获得用户token
@@ -17,6 +16,33 @@ const actions={
         resolve(api.getToken({url}));
       })
   },
+
+
+  /**
+   * 获取微信配置参数
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
+  getWechatConfig({state,commit},params){
+     return new Promise((resolve,reject)=>{
+       let url=window.location.href.split("#")[0];
+       api.getWechatConfig({url}).then((res)=>{
+          let result=res.data;
+          resolve(result);
+       })
+     })
+  },
+
+  getWechatPayParameter({state,commit},params){
+    return new Promise((resolve,reject)=>{
+      api.getWechatPayParameter().then((res)=>{
+
+      })
+    })
+  },
+
   /**
    * 获得所有投资人
    * @param state
@@ -127,6 +153,10 @@ const actions={
         result.map((item,index)=>{
           questionList.push({
             id:item.id,
+            listenPrice:item.listenPrice||0,
+            address:item.address||"深圳",
+            name:item.investor.data.realname,
+            is_privates:item.is_privates,
             summary:item.summary,
             detail:item.detail,
             photo:item.user.data.wechat.data.headimgurl,
@@ -312,13 +342,13 @@ const actions={
   getCategories({state,commit},params){
      return new Promise((resolve,reject)=>{
         api.getCategories(params).then((res)=>{
-            console.log(res);
             let result = res.data.data;
             let investCategories=[];
             result.map((item,index)=>{
               investCategories.push({
                 title:item.title,
                 id:item.id,
+                investorsTotal:item.investorsTotal,
                 icon:item.icon,
                 url:item.url
               })
@@ -347,8 +377,9 @@ const actions={
         result.map((item,index)=>{
           investorList.push({
             id:item.id,
-            realname:item.realname,
-            investment_fields:item.investment_fields,
+            position:item.position||"创投孵化器/总监",
+            name:item.realname,
+            investment_fields:item.investment_fields||['大数据','互联网'],
             photo:item.user.data.wechat.data.headimgurl,
             isFollowing:item.isFollowing,
             answer:item.totalQuestionsAnswers

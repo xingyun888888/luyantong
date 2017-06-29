@@ -71,22 +71,24 @@
       </grid-item>
     </grid>
     <div class="list-title"><b></b><span>投资人列表</span></div>
-    <router-link v-for="(item,index) in investorList" :key="index" :to="{path:'investorDetail',query:{id:item.id}}" >
-      <investor-card  :value="item" ></investor-card>
-    </router-link>
-    <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading" spinner="circles">
-      <div slot="no-results" >
-        <p style="font-size:1rem;padding:1rem;text-align:center;" @click="changeFilter">加载失败,请点我重试</p>
-      </div>
-      <div slot="no-more">
-        <p style="font-size:1rem;padding:1rem;text-align:center;" @click="changeFilter">没有更多信息了</p>
-      </div>
-    </infinite-loading>
+    <div>
+      <router-link v-for="(item,index) in investorList" :key="index" :to="{path:'investorDetail',query:{id:item.id}}" >
+        <investor-card  :value="item" ></investor-card>
+      </router-link>
+      <infinite-loading :on-infinite="onInfinite" ref="infiniteLoading" spinner="waveDots">
+        <div slot="no-results" >
+          <p style="font-size:1rem;padding:1rem;text-align:center;" @click="changeFilter">加载失败,请点我重试</p>
+        </div>
+        <div slot="no-more">
+          <p style="font-size:1rem;padding:1rem;text-align:center;" @click="changeFilter">没有更多信息了</p>
+        </div>
+      </infinite-loading>
+    </div>
   </div>
 </template>
 <script>
 
-   import {mapActions,mapGetters} from "vuex"
+   import {mapActions,mapGetters,mapMutations} from "vuex"
    import investorCard from '../common/investorCard.vue'
    import {Grid,GridItem,GroupTitle,Search,Icon} from "vux"
    import InfiniteLoading from 'vue-infinite-loading';
@@ -104,10 +106,13 @@
    export default {
        mounted(){
          reSetTitleUtil.reSetTitle("找投资");
-
-
-         this.getCategories().then((res)=>{
+         new Promise((resolve,reject)=>{
+           this.getCategories({take:7}).then((res)=>{
              this.investCategories=res.investCategories;
+             resolve()
+           })
+         }).then((res)=>{
+             this.updateLoadingStatus({isLoading:false});
          })
 
        },
@@ -128,6 +133,7 @@
        },
        components:{investorCard,Grid,GridItem,GroupTitle,Search,Icon,InfiniteLoading},
        methods:{
+         ...mapMutations(['updateLoadingStatus']),
          ...mapActions(["attentionInvestor","getInvestors","getCategories","followInvestor"]),
          setFocus(){
              this.searchIsShow=true;
@@ -155,18 +161,13 @@
            console.log('on cancel')
            this.searchIsShow=false;
          },
-         onInfinite() {
+         onInfinite(e) {
+             console.log(3);
            this.getInvestors({page:this.currentPage++}).then((res)=>{
              this.investorList=this.investorList.concat(res.investorList);
              this.$refs.infiniteLoading&&this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
              if (this.currentPage>=res.pagination.count) {
              this.$refs.infiniteLoading&&this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
-               this.$vux.toast.show({
-                 text:"没有更多信息了",
-                 type:'text',
-                 width:'80%',
-                 time:1500
-               })
              }
            })
          },

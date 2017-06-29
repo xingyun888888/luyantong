@@ -400,5 +400,60 @@ div.vux-tab
     }
   }
 
+  /**
+    toast弹出框
+   */
+  .weui-toast{
+    z-index:10000;
+    background:transparent;
+    top:15rem;
+    .weui-loading{
+      margin:2rem 0 0;
+      width:3rem;
+      height:3rem;
+    }
+    .weui-toast__content{
+      font-size:1rem;
+      margin:0 0 1rem;
+    }
+  }
 }
 
+/**
+    toast弹出框
+   */
+.weui-toast{
+  top:15rem;
+  .weui-loading{
+    margin:2rem 0 0;
+    width:2.5rem;
+    height:2.5rem;
+    line-height:2.5rem;
+  }
+  .weui-toast__content{
+    font-size:1rem;
+    margin:0 0 1rem;
+  }
+}
+
+
+.vux-x-dialog{
+  .weui-dialog{
+    max-width:25rem;
+    .weui-dialog__hd{
+      padding:1.3em 1.6em 0;
+      .weui-dialog__title{
+        font-size:1.2rem;
+        font-weight:400;
+      }
+    }
+    .weui-dialog__bd{
+      min-height:2rem;
+      font-size:1rem;
+    }
+    .weui-dialog__ft{
+      line-height:2.9rem;
+      font-size:1.1rem;
+    }
+  }
+}

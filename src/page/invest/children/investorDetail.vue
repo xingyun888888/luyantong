@@ -26,14 +26,18 @@
     import RequestCard from '../../common/questionCard'
     import InfiniteLoading from 'vue-infinite-loading'
     import reSetTitleUtil from '../../common/RestTitle'
-    import {mapActions} from 'vuex'
+    import {mapActions,mapMutations} from 'vuex'
     export default{
         mounted(){
-
             reSetTitleUtil.reSetTitle("投资人详情");
-            this.getInvestorDetail({url:"/api/investors/"+this.$route.query.id}).then((res)=>{
-                 this.investorInfo=res.investorInfo;
-            });
+            new Promise((resolve,reject)=>{
+              this.getInvestorDetail({url:"/api/investors/"+this.$route.query.id}).then((res)=> {
+                this.investorInfo = res.investorInfo;
+                resolve()
+              })
+            }).then(()=>{
+                this.updateLoadingStatus({isLoading:false});
+            })
         },
         data(){
            return{
@@ -46,6 +50,7 @@
         },
         methods:{
           ...mapActions(['getInvestorDetail',"getQuestion"]),
+          ...mapMutations(['updateLoadingStatus']),
           onInfinite() {
             this.getQuestion({url:"/api/questions"}).then((res)=>{
               this.questionList=this.questionList.concat(res.questionList);

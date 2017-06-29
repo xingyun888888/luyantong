@@ -11,12 +11,14 @@
   </div>
 </template>
 <script>
+  import {mapMutations} from "vuex"
   import projectCard from '../common/projectCard'
   import {Tab,TabItem} from "vux"
   import reSetTitleUtil from "../common/RestTitle"
   export default{
       mounted(){
         reSetTitleUtil.reSetTitle("项目");
+        this.updateLoadingStatus({isLoading:false});
       },
       data(){
           return{
@@ -24,6 +26,7 @@
           }
       },
       methods:{
+        ...mapMutations(["updateLoadingStatus"]),
         onItemClick (index) {
           console.log('on item click:', index)
           if(index==0){

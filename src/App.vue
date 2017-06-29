@@ -3,6 +3,7 @@
     <!--<transition :name="'vux-pop-'+(direction=='forward' ? 'in' : 'out')">-->
      <!---->
     <!--</transition> -->
+    <loading v-model="isLoading"></loading>
     <transition name="fadeOutLeftBig">
       <router-view class="router-view"></router-view>
     </transition>
@@ -11,12 +12,13 @@
 </template>
 
 <script>
-import {mapActions} from "vuex"
+import {mapActions,mapState} from "vuex"
 import FootGuide from "./components/footer/footGuide.vue"
+import {Loading} from 'vux'
 
 export default {
     components:{
-      FootGuide
+      FootGuide,Loading,
     },
     mounted(){
 //      this.gettoken().then((res)=>{
@@ -30,9 +32,27 @@ export default {
 //          jsApiList:['onMenuShareTimeline','startRecord','stopRecord','playVoice','uploadImage','chooseImage','chooseWXPay','translateVoice']
 //        });
 //      })
+//
+//       this.getWechatConfig().then((res)=>{
+//           this.$wechat.config({
+//            debug:true,
+//            appId  : res.appId,
+//            timestamp : res.timestamp,
+//            nonceStr :res.nonceStr,
+//            signature:res.signature,
+//            jsApiList:res.jsApiList
+//          });
+//       })
+    },
+    computed:{
+      ...mapState({
+        isLoading: (state) => {
+          return state.vux.isLoading
+        }
+      })
     },
     methods:{
-      ...mapActions(["gettoken"]),
+      ...mapActions(["gettoken","getWechatConfig"]),
     },
     data(){
         return{
@@ -54,16 +74,28 @@ export default {
   .fadeOutLeftBig-enter,.fadeOutLeftBig-leave-active{
     opacity:0;
   }
+  .router-view {
+    width: 100%;
+    height:100%;
+    /*top: 46px;*/
+  }
 
-  .router-fade-enter-active,.router-fade-leave-action{
+  .cancelCopy{
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+  }
+
+
+  /*.router-fade-enter-active,.router-fade-leave-action{
     transition:opacity 0.5s;
   }
   .router-fade-enter,.router-fade-leave-active{
     opacity:0;
-  }
-  .router-view {
-    width: 100%;
-    /*top: 46px;*/
   }
   .vux-pop-out-enter-active,
   .vux-pop-out-leave-active,
@@ -72,7 +104,6 @@ export default {
     will-change: transform;
     transition: all 300ms;
     height: 100%;
-    /*top: 46px;*/
     position: absolute;
     backface-visibility: hidden;
     perspective: 1000;
@@ -93,13 +124,6 @@ export default {
     opacity: 0;
     transform: translate3d(-100%, 0, 0);
   }
-  .cancelCopy{
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    -o-user-select:none;
-  }
+  */
+
 </style>

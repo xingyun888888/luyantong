@@ -271,12 +271,14 @@
    </div>
 </template>
 <script>
+  import {mapMutations} from "vuex";
   import MineHomeHeader from '../component/mineHomeHeader.vue';
   import {CellBox,Group,Cell} from 'vux';
   import reSetTitleUtil from "../common/RestTitle"
   export default{
       mounted(){
         reSetTitleUtil.reSetTitle("我的主页");
+        this.updateLoadingStatus({isLoading:false});
       },
       data(){
           return{
@@ -284,6 +286,7 @@
           }
       },
       methods:{
+        ...mapMutations(["updateLoadingStatus"])
 
       },
       components:{MineHomeHeader,Group,Cell}

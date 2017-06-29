@@ -8,14 +8,7 @@ export default{
   Investors(state,getters,rootState){
     return state.investors
   },
-
-
-
-
-  Shop:(state,getters,rootState) => {
-    return state.shop
-  },
-  System:(state,getters,rootState) => {
-    return rootState.common.system
-  }
+  // System:(state,getters,rootState) => {
+  //   return rootState.common.system
+  // }
 }

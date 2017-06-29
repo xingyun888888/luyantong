@@ -96,7 +96,7 @@
 
             // component options
             start: 0,
-            playsinline: false,
+            playsinline:true,
 
             // videojs options
             muted: false,
@@ -106,7 +106,7 @@
               type: "video/mp4",
               src: "http://vjs.zencdn.net/v/oceans.mp4"
             }],
-            poster: "/static/images/author.jpg",
+            //poster: "/static/images/author.jpg",
           }
         }
       },

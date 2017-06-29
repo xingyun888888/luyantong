@@ -7,13 +7,13 @@
      </div>
      <div class="card-right">
         <div class="card-right-title">
-          <span class="name">{{value.summary}}</span>
+          <span class="name">{{value.name}}</span>
           <span class="address">{{value.address}}</span>
           <button class="will-pay-listen" @click="pay($event,value.listenPrice)">{{value.listenPrice}}元偷听</button>
           <span class="listened">{{value.totalListens}}人偷听</span>
         </div>
        <div class="card-right-body">
-          <p>{{value.detail}}</p>
+          <p>{{value.summary}}</p>
        </div>
      </div>
    </div>

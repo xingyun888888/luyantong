@@ -13,12 +13,14 @@
   </div>
 </template>
 <script>
+  import {mapMutations} from "vuex"
   import activeCard from "../common/activeCard.vue"
   import reSetTitleUtil from '../common/RestTitle'
   import {Tab,TabItem} from "vux"
   export default{
       mounted(){
         reSetTitleUtil.reSetTitle("活动");
+        this.updateLoadingStatus({isLoading:false});
       },
       data(){
         return{
@@ -26,6 +28,7 @@
         }
       },
       methods:{
+        ...mapMutations(["updateLoadingStatus"]),
          onItemClick (index) {
           console.log('on item click:', index)
           if(index==0){

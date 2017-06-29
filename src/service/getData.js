@@ -15,6 +15,17 @@ var serverUrl="http://192.168.1.30/api/";
 var getToken=(params) =>getInfo(serviceUrl,params,'get');
 
 /**
+ * 获取微信配置信息
+ * @param params
+ */
+var getWechatConfig=(params) =>getInfo("/api/wechat/jsconfig",params,'get');
+
+/**
+ * 获取微信支付参数
+ * @param params
+ */
+var getWechatPayParameter=(params)=>getInfo("/api/wechat/payment/jsspi-parameters",params,"get");
+/**
  * 获得所有投资人列表
  * @param params
  */
@@ -116,6 +127,10 @@ export {
   login,               //登录
 
   getToken,            //获取用户token
+
+  getWechatConfig,     //获取微信配置
+
+  getWechatPayParameter,//获取js支付参数
 
   getInvestors,        //获取投资人信息
 
