@@ -4,7 +4,7 @@
          {{new Date().toString()}}
        </div>
        <div class="zm-title">
-         Ta提出的问题:
+         {{$route.path=='/myQustionDetail'?'Ta':'我'}}提出的问题:
        </div>
        <div class="content">
          <p>

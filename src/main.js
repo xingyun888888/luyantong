@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
-//import App from './App'
+import App from './App'
 
 import router from './router/router.js'
 
@@ -31,7 +31,7 @@ store.registerModule('vux', { //
 })
 
 router.beforeEach(function (to, from, next) {
-  //window.scrollTo(0, 0)
+  window.scrollTo(0, 0)
   store.commit('updateLoadingStatus', {isLoading: true})
   next()
 })
@@ -65,7 +65,7 @@ history.setItem('/', 0)
 
 */
 router.afterEach(function (to) {
-  //window.scrollTo(0, 0)
+  window.scrollTo(0, 0)
   setTimeout(() => {
     //store.commit('updateLoadingStatus', {isLoading: false})
   }, 10)

@@ -5,9 +5,9 @@
     <!--</transition> -->
     <loading v-model="isLoading"></loading>
     <transition name="fadeOutLeftBig">
-      <router-view class="router-view"></router-view>
+        <router-view class="router-view"></router-view>
     </transition>
-    <foot-guide></foot-guide>
+    <foot-guide v-show="$route.path=='/invest'||$route.path=='/project'||$route.path=='/active'||$route.path=='/mine'"></foot-guide>
   </div>
 </template>
 
@@ -33,16 +33,16 @@ export default {
 //        });
 //      })
 //
-//       this.getWechatConfig().then((res)=>{
-//           this.$wechat.config({
-//            debug:true,
-//            appId  : res.appId,
-//            timestamp : res.timestamp,
-//            nonceStr :res.nonceStr,
-//            signature:res.signature,
-//            jsApiList:res.jsApiList
-//          });
-//       })
+       this.getWechatConfig().then((res)=>{
+           this.$wechat.config({
+            debug:true,
+            appId  : res.appId,
+            timestamp : res.timestamp,
+            nonceStr :res.nonceStr,
+            signature:res.signature,
+            jsApiList:res.jsApiList
+          });
+       })
     },
     computed:{
       ...mapState({
@@ -76,7 +76,7 @@ export default {
   }
   .router-view {
     width: 100%;
-    height:100%;
+    /*height:100%;*/
     /*top: 46px;*/
   }
 

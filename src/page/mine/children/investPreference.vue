@@ -53,12 +53,14 @@
 </template>
 <script>
   import {Checklist,Group,Radio,XTextarea,XButton,XAddress,ChinaAddressV3Data} from 'vux'
-  import {mapActions} from "vuex"
+  import {mapActions,mapMutations} from "vuex"
   import reSetTitleUtil from '../../common/RestTitle'
   export default{
       mounted(){
         reSetTitleUtil.reSetTitle("投资偏好");
-        this.getInvestPreference().then((res)=>{
+
+        new Promise((resolve,reject)=>{
+          this.getInvestPreference().then((res)=>{
             console.log(res);
             this.investPreferenceList=res.investment_stages;
             this.investPreferenceSelected=res.investment_stages_checked;
@@ -66,7 +68,12 @@
             this.planInvestNumberSelected=res.plan_to_invest_amount_checked;
             this.singleInvestLimit=res.amount_per_project;
             this.singleInvestLimitSelected=res.amount_per_project_checked;
-        });
+            resolve();
+          });
+        }).then(()=>{
+            this.updateLoadingStatus({isLoading:false});
+        })
+
       },
       data(){
           return{
@@ -86,6 +93,7 @@
       },
       methods:{
         ...mapActions(['getInvestPreference']),
+        ...mapMutations(["updateLoadingStatus"]),
         logShow (str) {
           console.log('on-show')
         },

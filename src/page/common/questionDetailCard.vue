@@ -7,12 +7,12 @@
     </div>
     <div class="card-right">
       <div class="card-right-title">
-        <span class="name">{{value.summary}}</span>
+        <span class="name">{{value.name}}</span>
         <span class="address">{{value.address}}</span>
         <span class="price">{{"￥"+value.price}}</span>
       </div>
       <div class="card-right-body">
-        <p>如果你无法简洁的表达你的想法，那只能说明你还不够了解它</p>
+        <p>{{value.summary}}</p>
       </div>
     </div>
   </div>
@@ -24,10 +24,6 @@
         type:Object,
         default:()=>{
           return{
-            photo:"/static/images/bitmap.png",
-            name:"王强",
-            address:"北京",
-            price:Number(160).toFixed(2)
           }
         }
       }

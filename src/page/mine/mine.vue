@@ -294,7 +294,7 @@
 </script>
 <style lang="scss">
   .mine-container{
-    margin-bottom:5rem;
+    /*margin-bottom:5rem;*/
     .weui-cells{
      margin-top:0;
      &:before,&:after {

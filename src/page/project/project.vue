@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="project-container">
       <tab>
         <tab-item selected @on-item-click="onItemClick">个人项目</tab-item>
         <tab-item @on-item-click="onItemClick">机构项目</tab-item>
@@ -42,6 +42,8 @@
 
   }
 </script>
-<style>
-
+<style lang="scss" scoped>
+  .project-container{
+    margin-bottom:100px;
+  }
 </style>

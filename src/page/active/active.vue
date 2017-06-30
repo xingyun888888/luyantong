@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="active-container">
     <tab>
       <tab-item selected @on-item-click="onItemClick">报名中</tab-item>
       <tab-item @on-item-click="onItemClick">进行中</tab-item>
@@ -44,5 +44,7 @@
   }
 </script>
 <style lang="scss" scoped>
-
+  .active-container{
+    margin-bottom:100px;
+  }
 </style>

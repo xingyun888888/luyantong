@@ -106,6 +106,9 @@
    export default {
        mounted(){
          reSetTitleUtil.reSetTitle("找投资");
+         this.getInvestors({page:this.currentPage++}).then((res)=>{
+           this.investorList=this.investorList.concat(res.investorList);
+         })
          new Promise((resolve,reject)=>{
            this.getCategories({take:7}).then((res)=>{
              this.investCategories=res.investCategories;
@@ -202,7 +205,7 @@
     /*}*/
   }
   .zm-container{
-    margin-bottom:5rem;
+    margin-bottom:50px;
   }
   .field-list{
     a{

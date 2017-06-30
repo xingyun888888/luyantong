@@ -35,10 +35,18 @@ const actions={
      })
   },
 
+  /**
+   * 获得支付参数
+   * @param state
+   * @param commit
+   * @param params
+   * @returns {Promise}
+   */
   getWechatPayParameter({state,commit},params){
     return new Promise((resolve,reject)=>{
-      api.getWechatPayParameter().then((res)=>{
-
+      api.getWechatPayParameter(params).then((res)=>{
+         let result = res.data;
+         resolve(result);
       })
     })
   },
@@ -271,13 +279,15 @@ const actions={
          let result = res.data.data;
          console.log(result);
          resolve({
+           name:result.investor.data.realname,
+           self_introduction:result.investor.data.self_introduction,
            answer:result.answer,
            bp_images:result.bp_images,
            detail:result.detail,
            id:result.id,
            totalListens:result.totalListens,
            summary:result.summary,
-           photo:result.user.data.wechat.data.headimgurl
+           photo:result.investor.data.user.data.wechat.data.headimgurl
          });
       })
     })
@@ -295,7 +305,7 @@ const actions={
     return new Promise((resolve,reject)=>{
        api.getInvestPreference(params).then((res)=>{
           let result = res.data;
-          console.log(result);
+          //console.log(result);
 
           let amount_per_project=[];
           let investment_stages=[];
@@ -371,9 +381,10 @@ const actions={
     return new Promise((resolve,reject)=>{
       api.getFieldInvestorList(params).then((res)=>{
         let result = res.data.data.investors.data;
-        console.log(result);
+        //console.log(result);
         let investorList=[];
         let investorsTotal=res.data.data.investorsTotal;
+        let title=res.data.data.title;
         result.map((item,index)=>{
           investorList.push({
             id:item.id,
@@ -383,10 +394,9 @@ const actions={
             photo:item.user.data.wechat.data.headimgurl,
             isFollowing:item.isFollowing,
             answer:item.totalQuestionsAnswers
-
           });
         })
-         resolve({investorList,investorsTotal});
+         resolve({investorList,investorsTotal,title});
       })
     })
   }

@@ -57,12 +57,12 @@
               this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded');
               if (true) {
                 this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete');
-                this.$vux.toast.show({
-                  text:"没有更多信息了",
-                  type:'text',
-                  width:'80%',
-                  time:1500
-                })
+//                this.$vux.toast.show({
+//                  text:"没有更多信息了",
+//                  type:'text',
+//                  width:'80%',
+//                  time:1000,
+//                })
               }
             })
           },

@@ -10,11 +10,16 @@
 </template>
 <script>
   import questionDetailCard from '../common/questionDetailCard'
-  import {mapActions} from 'vuex'
+  import {mapActions,mapMutations} from 'vuex'
   export default{
      mounted(){
-       this.getMyAnswer({answer:0}).then((res)=>{
-         this.myAnswerList=res.myAnswerList;
+       new Promise((resolve,reject)=>{
+         this.getMyAnswer({answer:0}).then((res)=>{
+            this.myAnswerList=res.myAnswerList
+            resolve()
+         })
+       }).then((res)=>{
+          this.updateLoadingStatus({isLoading:false});
        })
      },
      data(){
@@ -23,7 +28,8 @@
          }
      },
      methods:{
-       ...mapActions(["getMyAnswer"])
+       ...mapActions(["getMyAnswer"]),
+       ...mapMutations(["updateLoadingStatus"])
      },
      components:{questionDetailCard}
   }

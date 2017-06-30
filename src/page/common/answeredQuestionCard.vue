@@ -13,7 +13,7 @@
         <span class="listened">{{value.totalListens}}人偷听</span>
       </div>
       <div class="card-right-body">
-        <p>如果你无法简洁的表达你的想法，那只能说明你还不够了解它</p>
+        <p>{{value.summary}}</p>
       </div>
     </div>
   </div>

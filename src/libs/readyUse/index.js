@@ -241,3 +241,28 @@
  *
  *
  */
+
+
+
+/***
+ // 这是目前用的比较多的方式
+ <keep-alive>
+ <router-view v-if="!$route.meta.notKeepAlive"></router-view>
+ </keep-alive>
+ <router-view v-if="$route.meta.notKeepAlive"></router-view>
+
+
+ routes: [
+ { path: '/', redirect: '/index',  component: Index, meta: { keepAlive: true }},
+ {
+   path: '/common',
+   component: TestParent,
+   children: [
+     { path: '/test2', component: Test2, meta: { keepAlive: true } }
+   ]
+ }
+ ....
+ // 表示index和test2都使用keep-alive
+ */
+
+

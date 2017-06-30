@@ -107,10 +107,11 @@
   </div>
 </template>
 <script>
+  import {mapMutations} from 'vuex'
   import {Selector,Checker,CheckerItem,XButton} from  'vux';
   export default{
       mounted(){
-
+        this.updateLoadingStatus({isLoading:false});
       },
       data(){
         return{
@@ -127,6 +128,7 @@
         }
       },
       methods:{
+        ...mapMutations(["updateLoadingStatus"]),
         save(){
 
         },
@@ -193,7 +195,7 @@
 <style lang="scss" scoped>
   @import "../../../style/valiable.scss";
   .tobe-investor-container{
-      margin-bottom:5rem;
+      /*margin-bottom:5rem;*/
       padding:0.8rem;
       cursor: url('/static/images/some-cursor.ico') default;
      .head-info{

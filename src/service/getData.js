@@ -24,7 +24,7 @@ var getWechatConfig=(params) =>getInfo("/api/wechat/jsconfig",params,'get');
  * 获取微信支付参数
  * @param params
  */
-var getWechatPayParameter=(params)=>getInfo("/api/wechat/payment/jsspi-parameters",params,"get");
+var getWechatPayParameter=(params)=>getInfo("/api/wechat/payment/jsapi-parameters",params,"get");
 /**
  * 获得所有投资人列表
  * @param params
@@ -110,17 +110,6 @@ var saveQuestion=(params)=>getInfo("api/questions",params,"post");
  */
 var login = (params) => getInfo(serviceUrl,params,'post');
 
-/**
- * 获取图片验证码
- * @param {mobile}
- */
-var getImageCode = (params) => getInfo('http://10.160.10.50:8019/common/verification/Image/'+params.mobile,{},'get');
-
-/**
- * 获取手机短信验证码(把图形验证码传给后端校验)
- * @param {mobile，verifyCode}
- */
-var getSmsCode = (params) => getInfo('http://10.160.10.50:8019/common/verification/mobile/'+params.mobile,{"verifyCode":params.verifyCode},'get');
 
 
 export {
@@ -156,9 +145,5 @@ export {
 
   getListenedQuestion, //获得听过的问题
 
-
-  getImageCode,        //获取图片验证码
-
-  getSmsCode,          //获取短信验证码
 }
 

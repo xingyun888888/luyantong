@@ -1,6 +1,6 @@
 <template>
   <div class="more-filed-container">
-     <router-link tag="li" v-for="(item,index) in investCategories" :key="index" :to="{path:'investorList', query:{title:'企业服务类'}}">
+     <router-link tag="li" v-for="(item,index) in investCategories" :key="index" :to="{path:'investorList', query:{title:'企业服务类',id:item.id}}">
         <invest-field-cell :value="item"></invest-field-cell>
      </router-link>
   </div>
